@@ -1,0 +1,33 @@
+---
+- include: debian.yml
+  when: ansible_os_family == "Debian"
+
+- name: clone pathogen to ~/.vim
+  git:
+    repo: 'https://github.com/tpope/vim-pathogen.git'
+    dest: ~/.vim/
+
+- name: create ~/.vim directory
+  file:
+    path: ~/.vim
+    state: directory
+
+- name: create ~/.vim/bundle directory
+  file:
+    path: ~/.vim/bundle
+    state: directory
+
+- name: configure ~/.vimrc
+  copy:
+    src: "{{ role_path }}/files/vimrc"
+    dest: ~/.vimrc 
+
+- name: clone NERDTree to ~/.vim/bundle/
+  git:
+    repo: 'https://github.com/scrooloose/nerdtree.git'
+    dest: ~/.vim/bundle/nerdtree
+
+- name: clone vim-sensible to ~/.vim/bundle/
+  git:
+    repo: 'https://github.com/tpope/vim-sensible.git'
+    dest: ~/.vim/bundle/vim-sensible

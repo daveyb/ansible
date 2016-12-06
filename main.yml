@@ -1,0 +1,39 @@
+---
+- name: Bootstrap
+  hosts: all
+  roles:
+  - bootstrap
+  tags:
+  - bootstrap
+  become: true
+
+- name: Install and configure git
+  hosts: all
+  roles:
+  - git
+  tags:
+  - git
+  become: true
+
+- name: Configure shell
+  hosts: all
+  roles:
+  - zsh
+  tags:
+  - shell
+
+- name: Install and configure vim
+  hosts: all
+  roles:
+  - vim
+  tags:
+  - vim
+  become: true
+
+- name: Install dropbox
+  hosts: all
+  roles:
+  - dropbox
+  tags:
+  - dropbox
+  become: true

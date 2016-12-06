@@ -1,0 +1,26 @@
+[user]
+	name = {{ user }}
+	email = {{ email }}
+[merge]
+	tool = vimdiff
+[alias]
+  aa = add .
+  ci = commit
+  co = checkout
+  slog = log --pretty=format:'%C(white)[%C(yellow)%h%C(white)] %C(blue)(%ad) %C(white)%s %C(green)%an' --date=local
+  st = status -s
+  blame = blame -w
+  wtf = blame -w
+  staged = diff --cached
+  pr = pull-request
+  amend = commit -a --amend
+[core]
+  excludesfile = ~/.gitignore
+  preloadindex = true
+  editor = vim
+[github]
+  user = {{ github_user }}
+[hub]
+  protocol = ssh
+[push]
+  default = upstream

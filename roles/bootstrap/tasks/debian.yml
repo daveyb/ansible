@@ -1,0 +1,16 @@
+---
+- name: apt-get update
+  apt:
+    update_cache: yes
+
+- name: Install xclip
+  package:
+    name: xclip
+    state: latest
+
+- name: Install curl
+  package:
+    name: curl
+    state: latest
+
+

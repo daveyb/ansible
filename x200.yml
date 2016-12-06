@@ -1,0 +1,8 @@
+---
+- name: configure Lenovo x200 laptop
+  hosts: all
+  roles:
+    - x200
+  tags:
+    - x200
+  become: true

@@ -1,0 +1,17 @@
+---
+- name: enable non-free debian apt repository
+  lineinfile:
+    dest: /etc/apt/sources.list
+    line: "{{ apt_nonfree_source }}"
+
+- name: apt-get update
+  apt:
+    update_cache: yes
+
+- name: install iwlwifi driver (non-free)
+  package:
+    name: firmware-iwlwifi
+    state: latest
+
+- name: add wifi module to kernel
+  shell: 'modprobe -r iwlwifi ; modprobe iwlwifi'
