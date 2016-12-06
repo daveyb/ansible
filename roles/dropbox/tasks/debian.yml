@@ -1,3 +1,17 @@
 ---
-- include: debian.yml
-  when: ansible_os_family == "Debian"
+- name: check if dropbox installed
+  command: "dpkg-query -W {{ dropbox_package_name }}"
+  register: dropbox_install_check
+  failed_when: dropbox_install_check.rc > 1
+  changed_when: dropbox_install_check.rc == 1
+  
+- name: download dropbox
+  get_url:
+    url: "{{ dropbox_url }}"
+    dest: "{{ working_dir }}/{{ dropbox_package_name }}"
+  when: dropbox_install_check.rc == 1
+
+- name: install dropbox
+  apt: deb="{{ working_dir }}/{{ dropbox_package_name }}"
+  when: dropbox_install_check.rc == 1
+
