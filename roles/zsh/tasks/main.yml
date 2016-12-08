@@ -1,0 +1,27 @@
+---
+- name: Clone oh-my-zsh
+  git:
+    repo: "{{ omz_repo }}"
+    dest: ~/.oh-my-zsh 
+
+- name: Copy example zshrc
+  shell: cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+
+- name: Change shell to zsh
+  shell: chsh -s /bin/zsh
+  become: true
+
+- name: Install powerline
+  shell: pip install powerline-status
+  become: true
+
+- name: Clone powerline fonts
+  git:
+    repo: "{{ powerline_fonts_repo }}"
+    dest: /tmp/powerline-fonts
+
+- name: Install powerline fonts
+  shell: . /tmp/powerline-fonts/install.sh
+
+- name: reload shell
+  shell: zsh --login

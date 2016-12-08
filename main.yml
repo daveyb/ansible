@@ -37,3 +37,10 @@
   tags:
   - dropbox
   become: true
+
+- name: Install and configure oh-my-zsh
+  hosts: all
+  roles:
+    - zsh
+  tags:
+    - zsh
