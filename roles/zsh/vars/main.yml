@@ -1,3 +1,5 @@
 ---
 omz_repo: 'https://github.com/robbyrussell/oh-my-zsh.git'
+zsh_theme: 'agnoster'
 powerline_fonts_repo: 'https://github.com/powerline/fonts.git'
+powerline_font: 'Meslo LG S Regular for Powerline.otf'
