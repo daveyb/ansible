@@ -12,7 +12,7 @@ It's designed to init new dotfiles as needed, so be aware that it may clobber ex
 4. An internet connection
 
 ###Clone
-`git clone https://github.com/daveyb/ansible.git /usr/local/src && cd /usr/local/src`
+`git clone https://github.com/daveyb/ansible.git /usr/local/src/ansible && cd /usr/local/src/ansible`
 
 ###Run all plays
 `ansible-playbook -i hosts main.yml --ask-sudo-pass`
