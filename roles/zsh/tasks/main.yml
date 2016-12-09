@@ -13,14 +13,15 @@
     regexp: '^ZSH_THEME='
     line: "ZSH_THEME={{ zsh_theme }}"
 
-- name: Register user/host
-  shell: echo $(whoami)@$(hostname)
-  register: userhost_output
-
-- name: Set command prompt context
+- name: Set DEFAULT_USER
   lineinfile:
     dest: ~/.zshrc
-    line: "prompt_context () {}"
+    line: "DEFAULT_USER=$USER"
+
+- name: Add time to prompt
+  lineinfile:
+    dest: ~/.zshrc
+    line: 'prompt_context () {prompt_segment black default "%t"}'
 
 - name: Change shell to zsh
   shell: chsh -s /bin/zsh
