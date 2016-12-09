@@ -2,6 +2,8 @@
 
 This is my personal (and always a WIP) Ansible playbook for setting up and enforcing a consistent config on my computers.
 
+Out-of-the-box, the plays will run on `localhost`, but it can be configured to run on remote *nix machines as well.
+
 It's designed to init new dotfiles as needed, so be aware that it may clobber existing dotfiles you already have.
 
 ##Usage
