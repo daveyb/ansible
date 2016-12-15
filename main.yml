@@ -44,3 +44,10 @@
     - zsh
   tags:
     - zsh
+
+- name: Install slack
+  hosts: all
+  roles:
+    - slack
+  tags:
+    - slack
