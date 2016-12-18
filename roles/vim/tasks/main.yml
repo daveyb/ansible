@@ -31,3 +31,10 @@
   git:
     repo: 'https://github.com/tpope/vim-sensible.git'
     dest: ~/.vim/bundle/vim-sensible
+
+- name: clone vim-airline to ~/.vim/bundle/
+  git:
+    repo: https://github.com/vim-airline/vim-airline
+    dest: ~/.vim/bundle/vim-airline
+    
+  

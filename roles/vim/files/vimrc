@@ -21,4 +21,8 @@ call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
 
 " filetype settings
 
+" plugins
 
+" vim-airline config
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
