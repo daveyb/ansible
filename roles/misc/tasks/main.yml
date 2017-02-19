@@ -1,0 +1,10 @@
+---
+- name: Install lshw
+  package:
+    name: lshw
+    state: latest
+
+- name: Install kupfer
+  package:
+    name: kupfer
+    state: latest

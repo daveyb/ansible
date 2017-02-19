@@ -12,5 +12,3 @@
   package:
     name: curl
     state: latest
-
-

@@ -4,9 +4,6 @@ user:
 email:
 working_dir: /tmp
 
-# debian
-apt_nonfree_source: 'deb http://httpredir.debian.org/debian/ jessie main contrib non-free'
-
 # git
 github_user:
 

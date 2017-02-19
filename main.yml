@@ -1,4 +1,11 @@
 ---
+- hosts: all
+  tasks:
+  - name: Group all hosts by os
+    group_by: key={{ ansible_os_family }}
+  tags:
+  - always
+
 - name: Bootstrap
   hosts: all
   roles:
@@ -21,6 +28,13 @@
   - zsh
   tags:
   - shell
+
+#- name: Configure terminal
+#  hosts: all
+#  roles:
+#  - term
+#  tags:
+#  - term
 
 - name: Install and configure vim
   hosts: all
@@ -50,3 +64,10 @@
     - slack
   tags:
     - slack
+
+- name: Install misc packages
+  hosts: all
+  roles:
+    - misc
+  tags:
+    - misc

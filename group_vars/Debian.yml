@@ -1,0 +1,5 @@
+---
+apt_nonfree_source: 'deb http://httpredir.debian.org/debian/ jessie main contrib non-free'
+
+colorize_repo: "https://github.com/daveyb/solarized-mate-terminal.git"
+colorize_script: solarized-mate.sh
