@@ -43,6 +43,14 @@
   tags:
   - vim
 
+- name: Install docker
+  hosts: all
+  roles:
+    - docker
+  tags:
+    - docker
+  become: true
+
 - name: Install dropbox
   hosts: all
   roles:

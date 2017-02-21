@@ -1,5 +1,9 @@
 ---
-apt_nonfree_source: 'deb http://httpredir.debian.org/debian/ jessie main contrib non-free'
+apt_nonfree_source: 'deb http://httpredir.debian.org/debian/ {{ ansible_distribution_release }} main contrib non-free'
 
 colorize_repo: "https://github.com/daveyb/solarized-mate-terminal.git"
 colorize_script: solarized-mate.sh
+
+docker_source: "deb https://apt.dockerproject.org/repo/ debian-{{ ansible_distribution_release}} main"
+docker_gpg_source: "https://apt.dockerproject.org/gpg"
+docker_gpg_key_id: 58118E89F3A912897C070ADBF76221572C52609D
