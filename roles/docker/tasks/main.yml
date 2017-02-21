@@ -34,4 +34,13 @@
     package:
       name: docker-engine
       state: latest
+  
+  - name: Add current user to 'docker' group
+    user: name={{ ansible_user_id }}
+          groups=docker
+          append=yes
+  
+  - debug:
+      msg: "Logoff/Logon required for {{ ansible_user_id }} before group changes will take effect"
+ 
   when: ansible_os_family == "Debian"
