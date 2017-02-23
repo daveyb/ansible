@@ -49,7 +49,6 @@
     - docker
   tags:
     - docker
-  become: true
 
 - name: Install dropbox
   hosts: all

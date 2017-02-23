@@ -1,0 +1,39 @@
+---
+- name: Determine latest release of docker-compose
+  shell: >
+      curl -s https://api.github.com/repos/docker/compose/releases/latest | 
+      jq -r ".assets[] |
+      select(.name==\"docker-compose-{{ ansible_system }}-{{ ansible_machine }}\") |
+      .browser_download_url"
+  register: docker_compose_download_url
+
+- name: Download latest docker-compose binaries
+  get_url:
+    url: "{{ docker_compose_download_url.stdout }}"
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+  become: true
+
+- name: Create zsh autocomplete folder
+  file:  
+    path: ~/.zsh/completion/
+    state: directory
+
+- name: Get docker-compose short version
+  shell: docker-compose version --short
+  register: docker_compose_version
+
+- name: Download docker-compose zsh autocomplete
+  get_url:
+    url: "https://raw.githubusercontent.com/docker/compose/{{ docker_compose_version.stdout }}/contrib/completion/zsh/_docker-compose"
+    dest: ~/.zsh/completion/_docker-compose
+
+- name: Ensure completion directory in fpath
+  lineinfile:
+    dest: ~/.zshrc
+    line: "fpath=(~/.zsh/completion $fpath)"
+
+- name: Ensure compinit is loaded into environment
+  lineinfile:
+    dest: ~/.zshrc
+    line: "autoload -Uz compinit && compinit -i"

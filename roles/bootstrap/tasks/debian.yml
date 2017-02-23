@@ -12,3 +12,8 @@
   package:
     name: curl
     state: latest
+
+- name: Install jq
+  package:
+    name: jq
+    state: latest
