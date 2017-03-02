@@ -72,6 +72,21 @@
   tags:
     - slack
 
+- name: Prepare for music
+  hosts: all
+  roles:
+    - audio
+  tags:
+    - audio
+
+- name: Prepare to read
+  hosts: all
+  roles:
+    - read
+  tags:
+    - read
+  become: true
+
 - name: Install misc packages
   hosts: all
   roles:

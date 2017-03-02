@@ -1,0 +1,15 @@
+---
+#- block:
+#  - name: Enable vocal repo
+#    lineinfile:
+#      dest: /etc/apt/sources.list
+#      line: "{{ vocal_podcatcher_repo }}"
+#
+#  - name: apt-get update
+#    apt:
+#      update_cache: yes
+
+#  - name: install podcatcher
+#   apt:
+#      update_cache: yes
+#  become: true
