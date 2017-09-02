@@ -7,6 +7,7 @@ Out-of-the-box, the plays will run on `localhost`, but it can be configured to r
 It's designed to init new dotfiles as needed, so be aware that it may clobber existing dotfiles you already have.
 
 ##Usage
+
 ###Prerequisites
 1. Python 2.7+ and `pip`
 2. A user account that's a member of the sudoers group `adduser <user> sudo`
