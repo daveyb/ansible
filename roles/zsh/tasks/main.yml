@@ -3,29 +3,30 @@
   package:
     name: zsh
     state: latest
+  become: true
 
 - name: Clone oh-my-zsh
   git:
     repo: "{{ omz_repo }}"
-    dest: ~/.oh-my-zsh 
+    dest: "~/.oh-my-zsh" 
 
 - name: Copy example zshrc
-  shell: cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+  shell: "cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc"
 
 - name: Set zsh theme
   lineinfile:
-    dest: ~/.zshrc
+    dest: "~/.zshrc"
     regexp: '^ZSH_THEME='
     line: "ZSH_THEME={{ zsh_theme }}"
 
 - name: Set DEFAULT_USER
   lineinfile:
-    dest: ~/.zshrc
+    dest: "~/.zshrc"
     line: "DEFAULT_USER=$USER"
 
 - name: Add time to prompt
   lineinfile:
-    dest: ~/.zshrc
+    dest: "~/.zshrc"
     line: 'prompt_context () {prompt_segment black default "%t"}'
 
 - name: Change shell to zsh
@@ -36,46 +37,7 @@
   shell: pip install powerline-status
   become: true
 
-- name: Install fontconfig
-  package:
-    name: fontconfig
-    state: latest
-
-- name: Clone powerline fonts
-  git:
-    repo: "{{ powerline_fonts_repo }}"
-    dest: ~/.tmp/powerline-fonts
-
-- name: Install powerline fonts
-  shell: . ~/.tmp/powerline-fonts/install.sh
-
-- name: Create ~/.fonts directory
-  file:
-    path: ~/.fonts
-    state: directory
-
-- name: Get powerline symbols
-  get_url:
-    url: 'https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf'
-    dest: ~/.fonts/PowerlineSymbols.otf
-
-- name: Create ~/.config/fontconfig/conf.d directory
-  file:
-    path: ~/.config/fontconfig/conf.d
-    state: directory
-
-- name: Configure powerline symbols
-  get_url:
-    url: 'https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf'
-    dest: ~/.config/fontconfig/conf.d/
-
-- name: Set powerline font
-  shell: "cp ~/.local/share/fonts/'{{ powerline_font }}' ~/.fonts/'{{ powerline_font }}'"
-
-- name: Reload font cache
-  shell: fc-cache -vf ~/.fonts/
-
 - name: reload zshrc
-  shell: source ~/.zshrc
+  shell: "source ~/.zshrc"
   args:
     executable: /usr/bin/zsh

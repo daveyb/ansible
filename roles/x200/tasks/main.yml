@@ -1,4 +1,8 @@
 ---
+- name: Include Debian specific vars
+  include_vars:
+    file: group_vars/Debian.yml
+
 - name: enable non-free debian apt repository
   lineinfile:
     dest: /etc/apt/sources.list
