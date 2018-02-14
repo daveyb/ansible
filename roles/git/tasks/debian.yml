@@ -3,3 +3,4 @@
   package:
     name: git
     state: latest
+  become: true

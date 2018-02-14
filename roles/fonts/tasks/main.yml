@@ -8,10 +8,10 @@
 - name: Clone powerline fonts
   git:
     repo: "{{ powerline_fonts_repo }}"
-    dest: "/tmp/powerline-fonts"
+    dest: "{{ working_dir }}/powerline-fonts"
 
 - name: Install powerline fonts
-  shell: ". /tmp/powerline-fonts/install.sh"
+  shell: ". {{ working_dir }}/powerline-fonts/install.sh"
 
 - name: Create ~/.fonts directory
   file:

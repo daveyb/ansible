@@ -4,8 +4,9 @@
 
 - name: template gitconfig
   template:
-    src: "{{ role_path }}/templates/gitconfig.j2"
+    src: "templates/gitconfig.j2"
     dest: ~/.gitconfig
+    force: true
 
 - name: download GitHub global gitignore
   get_url:

@@ -8,3 +8,8 @@
   package:
     name: kupfer
     state: latest
+
+- name: Install Silver Searcher
+  package:
+    name: silversearcher-ag
+    state: latest

@@ -20,7 +20,6 @@
   - git
   tags:
   - git
-  become: true
 
 - name: Install fonts
   hosts: all
