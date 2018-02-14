@@ -3,6 +3,7 @@
   package:
     name: fontconfig
     state: latest
+  become: true
 
 - name: Clone powerline fonts
   git:
@@ -12,29 +13,28 @@
 - name: Install powerline fonts
   shell: ". /tmp/powerline-fonts/install.sh"
 
-- name: Create /home/{{ ansible_env.USER }}/.fonts directory
+- name: Create ~/.fonts directory
   file:
-    path: "/home/{{ ansible_env.USER }}/.fonts"
+    path: "~/.fonts"
     state: directory
 
 - name: Get powerline symbols
   get_url:
     url: 'https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf'
-    dest: "/home/{{ ansible_env.USER }}/.fonts/PowerlineSymbols.otf"
+    dest: "~/.fonts/PowerlineSymbols.otf"
 
 - name: Create ~/.config/fontconfig/conf.d directory
   file:
-    path: "/home/{{ ansible_env.USER }}/.config/fontconfig/conf.d"
+    path: "~/.config/fontconfig/conf.d"
     state: directory
 
 - name: Configure powerline symbols
   get_url:
     url: 'https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf'
-    dest: "/home/{{ ansible_env.USER }}/.config/fontconfig/conf.d/"
+    dest: "~/.config/fontconfig/conf.d/"
 
 - name: Set powerline font
-  shell: "cp /home/{{ ansible_env.USER }}/.local/share/fonts/'{{ powerline_font }}' /home/{{ ansible_env.USER }}/.fonts/'{{ powerline_font }}'"
+  shell: "cp ~/.local/share/fonts/'{{ powerline_font }}' ~/.fonts/'{{ powerline_font }}'"
     
 - name: Reload font cache
-  shell: "fc-cache -vf /home/{{ ansible_env.USER }}/.fonts/"
-
+  shell: "fc-cache -vf ~/.fonts/"
