@@ -8,7 +8,7 @@
 - name: Clone oh-my-zsh
   git:
     repo: "{{ omz_repo }}"
-    dest: "~/.oh-my-zsh" 
+    dest: "{{ local_omz_repo }}"
 
 - name: Copy example zshrc
   shell: "cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc"

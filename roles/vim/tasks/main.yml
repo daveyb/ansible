@@ -1,5 +1,5 @@
 ---
-- include: linux.yml
+- include_tasks: linux.yml
   when: ansible_system == "Linux"
 
 - name: clone pathogen to ~/.vim
