@@ -1,7 +1,8 @@
 ---
-- name: apt-get update
-  apt:
-    update_cache: yes
+- include_role:
+    name: packages
+  vars:
+    update_cache: true
 
 - name: Install xclip
   package:

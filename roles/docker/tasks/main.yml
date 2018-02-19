@@ -1,4 +1,7 @@
 ---
-- include: debian.yml
-  when: ansible_os_family == "Debian"
+- include: linux.yml
+  when: ansible_system == "Linux"
 
+- name: set shell rc
+  set_fact:
+    shellrc: "~/.{{ lookup('env', 'SHELL') | basename }}rc"

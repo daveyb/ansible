@@ -1,6 +1,8 @@
 ---
 - hosts: all
   tasks:
+  - debug:
+      msg: vars
   - name: Group all hosts by os
     group_by: key={{ ansible_os_family }}
   tags:

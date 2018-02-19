@@ -41,3 +41,6 @@
   shell: "source ~/.zshrc"
   args:
     executable: /usr/bin/zsh
+
+- name: reload shell
+  shell: exec $SHELL

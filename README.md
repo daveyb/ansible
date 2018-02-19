@@ -1,6 +1,6 @@
 # daveyb's Ansible Playbook
 
-This is my personal (and always a WIP) Ansible playbook for setting up and enforcing a consistent config on my computers.
+This is my personal (and always a WIP, beware the monsters) Ansible playbook for setting up and enforcing a consistent config on my computers.
 
 Out-of-the-box, the plays will run on `localhost`, but it can be configured to run on remote *nix machines as well.
 
@@ -18,8 +18,8 @@ It's designed to init new dotfiles as needed, so be aware that it may clobber ex
 `git clone https://github.com/daveyb/ansible.git /usr/local/src/ansible && cd /usr/local/src/ansible`
 
 ###Run all plays
-`ansible-playbook -i hosts main.yml --ask-sudo-pass`
+`ansible-playbook -i hosts main.yml --ask-become-pass`
 
 ###Run a specific play based on tag (optional)
-`ansible-playbook -i hosts main.yml --ask-sudo-pass --tags=zsh`
+`ansible-playbook -i hosts main.yml --ask-become-pass -t zsh`
 

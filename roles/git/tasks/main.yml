@@ -1,6 +1,6 @@
 ---
-- include: debian.yml
-  when: ansible_os_family == "Debian"
+- include_tasks: linux.yml
+  when: ansible_system == "Linux"
 
 - name: template gitconfig
   template:
