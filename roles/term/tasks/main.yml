@@ -1,25 +1,6 @@
 ---
-- name: Install dconf-cli (Debian)
-  package:
-    name: dconf-cli
-    state: latest
-  when: ansible_os_family == "Debian"
-  become: true
+- include_tasks: linux.yml
+  when: ansible_system == "Linux"
 
-- name: Clone terminal colorize script to working directory
-  git:
-    repo: "{{ colorize_repo }}"
-    dest: "{{ working_dir }}/{{ colorize_repo | to_uuid }}"
-
-- name: Make colorize script directory executable
-  file:
-    path: "{{ working_dir }}/{{ colorize_repo | to_uuid }}"
-    state: directory
-    recurse: yes
-    mode: 0500
-
-- name: Execute colorize script
-  shell: "{{ colorize_script | quote }}"
-  args:
-    chdir: "{{ working_dir }}/{{ colorize_repo | to_uuid }}"
-
+- include_tasks: darwin.yml
+  when: ansible_system == "Darwin"

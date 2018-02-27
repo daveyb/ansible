@@ -1,0 +1,3 @@
+---
+- name: install dropbox
+  shell: brew cask install dropbox

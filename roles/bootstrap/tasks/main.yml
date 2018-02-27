@@ -1,5 +1,5 @@
 # Utility role for bootstrapping future roles
-# runs as root
+# Linux runs as root
 ---
 - include_tasks: linux.yml
   when: ansible_system == "Linux"

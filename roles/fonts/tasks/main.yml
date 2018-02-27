@@ -1,40 +1,11 @@
 ---
-- name: Install fontconfig
-  package:
-    name: fontconfig
-    state: latest
-  become: true
-
 - name: Clone powerline fonts
   git:
     repo: "{{ powerline_fonts_repo }}"
-    dest: "{{ working_dir }}/powerline-fonts"
+    dest: "{{ working_dir }}/{{ powerline_fonts_workdir }}"
 
-- name: Install powerline fonts
-  shell: ". {{ working_dir }}/powerline-fonts/install.sh"
+- include_tasks: linux.yml
+  when: ansible_system == "Linux"
 
-- name: Create ~/.fonts directory
-  file:
-    path: "~/.fonts"
-    state: directory
-
-- name: Get powerline symbols
-  get_url:
-    url: 'https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf'
-    dest: "~/.fonts/PowerlineSymbols.otf"
-
-- name: Create ~/.config/fontconfig/conf.d directory
-  file:
-    path: "~/.config/fontconfig/conf.d"
-    state: directory
-
-- name: Configure powerline symbols
-  get_url:
-    url: 'https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf'
-    dest: "~/.config/fontconfig/conf.d/"
-
-- name: Set powerline font
-  shell: "cp ~/.local/share/fonts/'{{ powerline_font }}' ~/.fonts/'{{ powerline_font }}'"
-    
-- name: Reload font cache
-  shell: "fc-cache -vf ~/.fonts/"
+- include_tasks: darwin.yml
+  when: ansible_system == "Darwin"

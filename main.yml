@@ -14,7 +14,6 @@
   - bootstrap
   tags:
   - bootstrap
-  become: true
 
 - name: Install and configure git
   hosts: all
@@ -37,12 +36,12 @@
   tags:
   - shell
 
-#- name: Configure terminal
-#  hosts: all
-#  roles:
-#  - term
-#  tags:
-#  - term
+- name: Configure terminal
+  hosts: all
+  roles:
+  - term
+  tags:
+  - term
 
 - name: Install and configure vim
   hosts: all
@@ -71,7 +70,6 @@
   - dropbox
   tags:
   - dropbox
-  become: true
 
 - name: Install slack
   hosts: all
@@ -101,4 +99,3 @@
     - misc
   tags:
     - misc
-  become: true

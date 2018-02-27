@@ -1,0 +1,8 @@
+---
+- name: install ag
+  homebrew:
+    name: the_silver_searcher
+    state: latest
+
+- name: install royal-tsx
+  shell: brew cask install royal-tsx

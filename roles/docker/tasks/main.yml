@@ -2,6 +2,9 @@
 - include_tasks: linux.yml
   when: ansible_system == "Linux"
 
+- include_tasks: darwin.yml
+  when: ansible_system == "Darwin"
+
 - name: set shell rc
   set_fact:
     shellrc: "~/.{{ lookup('env', 'SHELL') | basename }}rc"

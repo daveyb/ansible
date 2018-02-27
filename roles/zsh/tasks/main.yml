@@ -1,9 +1,9 @@
 ---
-- name: Install zsh
-  package:
-    name: zsh
-    state: latest
-  become: true
+- include_tasks: linux.yml
+  when: ansible_system == "Linux"
+
+- include_tasks: darwin.yml
+  when: ansible_system == "Darwin"
 
 - name: Clone oh-my-zsh
   git:
@@ -41,6 +41,13 @@
   shell: "source ~/.zshrc"
   args:
     executable: /usr/bin/zsh
+  when: ansible_system == "Linux"
+
+- name: reload zshrc
+  shell: "source ~/.zshrc"
+  args:
+    executable: /usr/local/bin/zsh
+  when: ansible_system == "Darwin"
 
 - name: reload shell
   shell: exec $SHELL

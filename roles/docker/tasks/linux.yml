@@ -30,6 +30,6 @@
   vars:
     update_cache: true
 
-- include_tasks: docker-engine.yml
+- include_tasks: linux/docker-engine.yml
 
-- include_tasks: docker-compose.yml
+- include_tasks: linux/docker-compose.yml

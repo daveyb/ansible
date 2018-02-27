@@ -1,3 +1,5 @@
 ---
+powerline_fonts_workdir: 'powerline-fonts'
 powerline_fonts_repo: 'https://github.com/powerline/fonts.git'
-powerline_font: 'Meslo LG S DZ Regular for Powerline.ttf'
+powerline_font_family: 'Meslo Slashed'
+powerline_font: 'Meslo LG M Regular for Powerline.ttf'

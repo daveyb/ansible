@@ -1,15 +1,7 @@
 ---
-- name: Install lshw
-  package:
-    name: lshw
-    state: latest
+- include_tasks: linux.yml
+  when: ansible_system == "Linux"
+  become: true
 
-- name: Install kupfer
-  package:
-    name: kupfer
-    state: latest
-
-- name: Install Silver Searcher
-  package:
-    name: silversearcher-ag
-    state: latest
+- include_tasks: darwin.yml
+  when: ansible_system == "Darwin"
