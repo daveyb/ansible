@@ -13,6 +13,13 @@
 - name: Copy example zshrc
   shell: "cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc"
 
+- name: add bin search paths to PATH
+  lineinfile:
+    dest: "~/.zshrc"
+    insertafter: BOF 
+    line: 'export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    state: present
+
 - name: Set zsh theme
   lineinfile:
     dest: "~/.zshrc"
