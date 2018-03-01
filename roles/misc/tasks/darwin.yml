@@ -6,3 +6,10 @@
 
 - name: install royal-tsx
   shell: brew cask install royal-tsx
+
+- name: install slack
+  shell: brew cask install slack
+  ignore_errors: yes # preinstalled version causing error
+
+- name: install teams
+  shell: brew cask install microsoft-teams
