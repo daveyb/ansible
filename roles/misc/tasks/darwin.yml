@@ -13,3 +13,8 @@
 
 - name: install teams
   shell: brew cask install microsoft-teams
+
+- name: install sshuttle
+  homebrew:
+    name: sshuttle
+    state: latest
