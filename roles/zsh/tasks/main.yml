@@ -9,6 +9,7 @@
   git:
     repo: "{{ omz_repo }}"
     dest: "{{ local_omz_repo }}"
+    force: yes
 
 - name: Copy example zshrc
   shell: "cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc"
