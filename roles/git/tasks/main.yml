@@ -2,6 +2,9 @@
 - include_tasks: linux.yml
   when: ansible_system == "Linux"
 
+- include_tasks: darwin.yml
+  when: ansible_system == "Darwin"
+
 - name: template gitconfig
   template:
     src: "templates/gitconfig.j2"
@@ -12,3 +15,8 @@
   get_url:
     url: https://gist.githubusercontent.com/octocat/9257657/raw/3f9569e65df83a7b328b39a091f0ce9c6efc6429/.gitignore
     dest: ~/.gitignore
+
+- name: Alias hub to git
+  lineinfile:
+    dest: ~/.zshrc
+    line: 'eval "$(hub alias -s)"'
