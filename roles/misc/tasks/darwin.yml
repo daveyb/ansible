@@ -11,6 +11,9 @@
   shell: brew cask install slack
   ignore_errors: yes # preinstalled version causing error
 
+- name: install libressl for teams
+  shell: brew install libressl
+
 - name: install teams
   shell: brew cask install microsoft-teams
 
