@@ -1,0 +1,2 @@
+---
+aws_cli_container: mesosphere/aws-cli

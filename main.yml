@@ -99,3 +99,10 @@
     - misc
   tags:
     - misc
+
+- name: AWS stuff
+  hosts: all
+  roles:
+    - aws
+  tags:
+    - aws
