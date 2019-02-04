@@ -1,0 +1,5 @@
+---
+- name: install hub for git
+  homebrew:
+    name: hub
+    state: latest

@@ -1,0 +1,23 @@
+---
+- hosts: all
+  tasks:
+  - debug:
+      msg: vars
+  - name: Group all hosts by os
+    group_by: key={{ ansible_os_family }}
+  tags:
+  - always
+
+- name: Bootstrap
+  hosts: all
+  roles:
+  - bootstrap
+  tags:
+  - bootstrap
+
+- name: Install and configure git
+  hosts: all
+  roles:
+  - git
+  tags:
+  - git
