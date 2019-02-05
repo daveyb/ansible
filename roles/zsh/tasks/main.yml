@@ -1,9 +1,9 @@
 ---
-- include_tasks: linux.yml
+- include_tasks: linux.yml                                       
   when: ansible_system == "Linux"
 
 - include_tasks: darwin.yml
-  when: ansible_system == "Darwin"
+  when: ansible_system == "Darwin" 
 
 - name: Clone oh-my-zsh
   git:
@@ -42,7 +42,7 @@
   become: true
 
 - name: Install powerline
-  shell: pip install powerline-status
+  shell: pip install --user git+git://github.com/powerline/powerline 
   become: true
 
 - name: reload zshrc
@@ -54,7 +54,7 @@
 - name: reload zshrc
   shell: "source ~/.zshrc"
   args:
-    executable: /usr/local/bin/zsh
+    executable: /bin/zsh
   when: ansible_system == "Darwin"
 
 - name: reload shell

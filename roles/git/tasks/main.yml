@@ -18,5 +18,5 @@
 
 - name: Alias hub to git
   lineinfile:
-    dest: ~/.zshrc
+    dest: ~/.profile
     line: 'eval "$(hub alias -s)"'
