@@ -14,5 +14,5 @@
 - name: reload zshrc
   shell: "source ~/.zshrc"
   args:
-    executable: /usr/local/bin/zsh
+    executable: /bin/zsh
   when: ansible_system == "Darwin"

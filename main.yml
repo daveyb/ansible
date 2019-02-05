@@ -64,35 +64,6 @@
   tags:
     - docker
 
-- name: Install dropbox
-  hosts: all
-  roles:
-  - dropbox
-  tags:
-  - dropbox
-
-- name: Install slack
-  hosts: all
-  roles:
-    - slack
-  tags:
-    - slack
-
-- name: Prepare for music
-  hosts: all
-  roles:
-    - audio
-  tags:
-    - audio
-
-#- name: Prepare to read
-#  hosts: all
-#  roles:
-#     - read
-#  tags:
-#    - read
-#  become: true
-
 - name: Install misc packages
   hosts: all
   roles:

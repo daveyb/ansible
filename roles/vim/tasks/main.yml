@@ -2,13 +2,15 @@
 - include_tasks: linux.yml
   when: ansible_system == "Linux"
 
-- include_tasks: darwin.yml
-  when: ansible_system == "Darwin"
+# brew install vim hangs, removed
+#- include_tasks: darwin.yml
+#  when: ansible_system == "Darwin"
 
 - name: clone pathogen to ~/.vim
   git:
     repo: 'https://github.com/tpope/vim-pathogen.git'
     dest: ~/.vim/
+    force: yes
 
 - name: create ~/.vim directory
   file:
