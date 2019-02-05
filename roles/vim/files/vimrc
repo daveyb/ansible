@@ -18,6 +18,7 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 endfunction
 
 call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " filetype settings
 
