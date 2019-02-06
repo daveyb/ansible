@@ -1,0 +1,3 @@
+---
+- name: restart dock
+  shell: killall Dock

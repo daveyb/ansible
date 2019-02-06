@@ -23,3 +23,5 @@ It's designed to init new dotfiles as needed, so be aware that it may clobber ex
 ### Run a specific play based on tag (optional)
 `ansible-playbook -i hosts main.yml --ask-become-pass -t zsh`
 
+### Configure GitHub user/email via parameters
+`ansible-playbok -i hosts main.yml --ask-become-pass -t git -e"user=MeMeMeMe" -e"email=me@me.com"`
