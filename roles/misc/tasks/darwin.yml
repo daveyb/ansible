@@ -22,6 +22,9 @@
     name: fswatch
     state: latest
 
+- name: install vagrant
+  shell: brew cask install vagrant
+
 - name: autohide OSX dock
   shell: defaults write com.apple.dock autohide true
   notify: restart dock
