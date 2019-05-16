@@ -1,2 +1,4 @@
 ---
-- include_tasks: pyenv.yml
+- include_tasks: darwin.yml
+  when: ansible_system == "Darwin"
+  become: true

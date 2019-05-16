@@ -9,9 +9,9 @@ It's designed to init new dotfiles as needed, so be aware that it may clobber ex
 ## Usage
 
 ### Prerequisites
-1. Python 2.7+ and `pip` (sudo easy_install pip)
+1. Python 3.5+ and `pip3` (sudo easy_install pip)
 2. A user account that's a member of the sudoers group `adduser <user> sudo`
-3. Ansible `sudo pip install ansible`
+3. Ansible `sudo pip3 install ansible`
 4. An internet connection
 
 ### Clone
