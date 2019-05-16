@@ -51,16 +51,16 @@
     executable: /usr/bin/zsh
   when: ansible_system == "Linux"
 
+- name: ensure ~/.profile is sourced in zshrc
+  lineinfile:
+    path: "/Users/{{ ansible_user_id }}/.zshrc"
+    line: 'source ~/.profile'
+
 - name: reload zshrc
   shell: "source ~/.zshrc"
   args:
     executable: /bin/zsh
   when: ansible_system == "Darwin"
-
-- name: ensure ~/.profile is sourced in zshrc
-  lineinfile:
-    path: "/Users/{{ ansible_user_id }}/.zshrc"
-    line: 'source ~/.profile'
 
 - name: reload shell
   shell: exec $SHELL
