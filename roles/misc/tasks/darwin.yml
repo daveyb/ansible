@@ -11,12 +11,6 @@
   shell: brew cask install slack
   ignore_errors: yes # preinstalled version causing error
 
-- name: install libressl for teams
-  shell: brew install libressl
-
-- name: install teams
-  shell: brew cask install microsoft-teams
-
 - name: install fswatch
   homebrew:
     name: fswatch
@@ -32,3 +26,13 @@
 - name: pin OSX dock to right edge
   shell: defaults write com.apple.dock orientation right
   notify: restart dock
+
+- name: install k9s
+  homebrew:
+    name: derailed/k9s/k9s
+    state: latest
+
+- name: install kubectx
+  homebrew:
+    name: kubectx
+    state: latest
