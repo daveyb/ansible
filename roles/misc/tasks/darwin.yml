@@ -27,6 +27,11 @@
   shell: defaults write com.apple.dock orientation right
   notify: restart dock
 
+- name: install kubectl
+  homebrew:
+    name: kubernetes-cli
+    state: latest
+
 - name: install k9s
   homebrew:
     name: derailed/k9s/k9s
