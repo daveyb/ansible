@@ -11,3 +11,4 @@
     regexp: "^export PATH=${PATH}"
 
 # NOTE: CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv install 3.7.3
+# If you're getting compilation errors caused by xcode cli tools
