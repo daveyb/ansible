@@ -4,6 +4,8 @@
 [merge]
   tool = vimdiff
 [alias]
+  b = branch --sort=-committerdate --column
+  br = branch --sort=-committerdate --column -r
   aa = add .
   ci = commit
   co = checkout
@@ -18,6 +20,8 @@
   excludesfile = ~/.gitignore
   preloadindex = true
   editor = vim
+  mergeoptions = --no-edit
+  pager = cat
 [github]
   user = {{ github_user }}
 [hub]

@@ -1,0 +1,9 @@
+---
+- include_tasks: update.yml 
+  when: update_cache is defined
+
+- include_tasks: source.yml
+  when: add_source is defined
+
+- include_tasks: gpg.yml
+  when: add_gpg is defined

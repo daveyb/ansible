@@ -1,0 +1,15 @@
+---
+- name: Install GNOME Tweak
+  package:
+    name: gnome-tweak-tool
+    state: latest
+
+- name: Install gtk2-engines-pixbuf
+  package:
+    name: gtk2-engines-pixbuf
+    state: latest
+
+- name: Install gtk2-engines-murrine
+  package:
+    name: gtk2-engines-murrine
+    state: latest

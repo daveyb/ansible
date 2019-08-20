@@ -1,11 +1,19 @@
 ---
+- hosts: all
+  tasks:
+  - debug:
+      msg: vars
+  - name: Group all hosts by os
+    group_by: key={{ ansible_os_family }}
+  tags:
+  - always
+
 - name: Bootstrap
   hosts: all
   roles:
   - bootstrap
   tags:
   - bootstrap
-  become: true
 
 - name: Install and configure git
   hosts: all
@@ -13,14 +21,27 @@
   - git
   tags:
   - git
-  become: true
 
+- name: Install fonts
+  hosts: all
+  roles:
+    - fonts
+  tags:
+    - fonts
+  
 - name: Configure shell
   hosts: all
   roles:
   - zsh
   tags:
   - shell
+
+- name: Configure terminal
+  hosts: all
+  roles:
+  - term
+  tags:
+  - term
 
 - name: Install and configure vim
   hosts: all
@@ -29,24 +50,37 @@
   tags:
   - vim
 
-- name: Install dropbox
+- name: Install chrome
   hosts: all
   roles:
-  - dropbox
+    - chrome
   tags:
-  - dropbox
-  become: true
+    - chrome
+  
+- name: Install docker
+  hosts: all
+  roles:
+    - docker
+  tags:
+    - docker
 
-- name: Install and configure oh-my-zsh
+- name: Install misc packages
   hosts: all
   roles:
-    - zsh
+    - misc
   tags:
-    - zsh
+    - misc
 
-- name: Install slack
+- name: AWS stuff
   hosts: all
   roles:
-    - slack
+    - aws
   tags:
-    - slack
+    - aws
+
+- name: Python stuff
+  hosts: all
+  roles:
+    - python
+  tags:
+    - python

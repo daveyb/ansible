@@ -1,0 +1,49 @@
+- name: touch installondemand file
+  file:
+    state: touch
+    path: /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+
+- name: Install Xcode Command Line Tools
+  shell: |
+    PROD=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
+    softwareupdate -i "$PROD"
+
+- name: remove installondemand file
+  file:
+    state: absent
+    path: /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+
+- name: alias xcrun git to git in profile
+  copy:
+    dest: "/Users/{{ ansible_user_id }}/.profile"
+    content: aliast git='xcrun git'
+
+- name: ensure homebrew dir exists
+  file:
+    path: /usr/local/homebrew
+    state: directory
+    mode: 0755
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+  become: yes
+
+- name: install homebrew
+  shell: cd /usr/local/src && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /usr/local/homebrew
+
+- name: add homebrew binaries to path
+  copy:
+    dest: "/Users/{{ ansible_user_id }}/.profile"
+    content: PATH=$PATH:/usr/local/homebrew/bin
+
+- name: update homebrew
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+
+- name: enable homebrew cask
+  shell: brew tap caskroom/cask
+
+- name: install jq
+  homebrew:
+    name: jq
+    state: latest

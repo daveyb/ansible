@@ -1,0 +1,6 @@
+---
+- name: install chrome
+  package:
+    name: chromium
+    state: latest
+  become: true

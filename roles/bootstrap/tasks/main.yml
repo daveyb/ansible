@@ -1,6 +1,25 @@
----
-- include: debian.yml
-  when: ansible_os_family == "Debian"
+# Utility role for bootstrapping future roles
+# Linux runs as root
+--- 
+- name: ensure src dir exists
+  file:
+    path: /usr/local/src
+    state: directory
+    mode: 0755
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+  become: yes
 
-- include: darwin.yml
-  when: ansible_os_family == "Darwin"
+- name: ensure shell profile exists
+  file:
+    path: "/Users/{{ ansible_user_id }}/.profile"
+    state: touch
+    mode: 0755
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+
+- include_tasks: linux.yml
+  when: ansible_system == "Linux"
+
+- include_tasks: darwin.yml
+  when: ansible_system == "Darwin"

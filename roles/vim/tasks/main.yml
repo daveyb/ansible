@@ -1,11 +1,16 @@
 ---
-- include: debian.yml
-  when: ansible_os_family == "Debian"
+- include_tasks: linux.yml
+  when: ansible_system == "Linux"
+
+# brew install vim hangs, removed
+#- include_tasks: darwin.yml
+#  when: ansible_system == "Darwin"
 
 - name: clone pathogen to ~/.vim
   git:
     repo: 'https://github.com/tpope/vim-pathogen.git'
     dest: ~/.vim/
+    force: yes
 
 - name: create ~/.vim directory
   file:
@@ -37,4 +42,7 @@
     repo: https://github.com/vim-airline/vim-airline
     dest: ~/.vim/bundle/vim-airline
     
-  
+- name: clone vim-mustache-handlebars to ~/.vim/bundle
+  git:
+    repo: https://github.com/mustache/vim-mustache-handlebars.git
+    dest: ~/.vim/bundle/vim-mustache-handlebars 

@@ -1,0 +1,48 @@
+---
+- name: install ag
+  homebrew:
+    name: the_silver_searcher
+    state: latest
+
+- name: install royal-tsx
+  shell: brew cask install royal-tsx
+
+- name: install slack
+  shell: brew cask install slack
+  ignore_errors: yes # preinstalled version causing error
+
+- name: install fswatch
+  homebrew:
+    name: fswatch
+    state: latest
+
+- name: install vagrant
+  shell: brew cask install vagrant
+
+- name: autohide OSX dock
+  shell: defaults write com.apple.dock autohide true
+  notify: restart dock
+
+- name: pin OSX dock to right edge
+  shell: defaults write com.apple.dock orientation right
+  notify: restart dock
+
+- name: install kubectl
+  homebrew:
+    name: kubernetes-cli
+    state: latest
+
+- name: install k9s
+  homebrew:
+    name: derailed/k9s/k9s
+    state: latest
+
+- name: install kubectx
+  homebrew:
+    name: kubectx
+    state: latest
+
+- name: install helm
+  homebrew:
+    name: kubernetes-helm
+    state: latest

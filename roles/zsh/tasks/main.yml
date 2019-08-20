@@ -1,31 +1,40 @@
 ---
-- name: Install zsh
-  package:
-    name: zsh
-    state: latest
+- include_tasks: linux.yml                                       
+  when: ansible_system == "Linux"
+
+- include_tasks: darwin.yml
+  when: ansible_system == "Darwin" 
 
 - name: Clone oh-my-zsh
   git:
     repo: "{{ omz_repo }}"
-    dest: ~/.oh-my-zsh 
+    dest: "{{ local_omz_repo }}"
+    force: yes
 
 - name: Copy example zshrc
-  shell: cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+  shell: "cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc"
+
+- name: add bin search paths to PATH
+  lineinfile:
+    dest: "~/.zshrc"
+    insertafter: BOF 
+    line: 'export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+    state: present
 
 - name: Set zsh theme
   lineinfile:
-    dest: ~/.zshrc
+    dest: "~/.zshrc"
     regexp: '^ZSH_THEME='
     line: "ZSH_THEME={{ zsh_theme }}"
 
 - name: Set DEFAULT_USER
   lineinfile:
-    dest: ~/.zshrc
+    dest: "~/.zshrc"
     line: "DEFAULT_USER=$USER"
 
 - name: Add time to prompt
   lineinfile:
-    dest: ~/.zshrc
+    dest: "~/.zshrc"
     line: 'prompt_context () {prompt_segment black default "%t"}'
 
 - name: Change shell to zsh
@@ -33,49 +42,25 @@
   become: true
 
 - name: Install powerline
-  shell: pip install powerline-status
+  shell: pip install --user git+git://github.com/powerline/powerline 
   become: true
 
-- name: Install fontconfig
-  package:
-    name: fontconfig
-    state: latest
-
-- name: Clone powerline fonts
-  git:
-    repo: "{{ powerline_fonts_repo }}"
-    dest: ~/.tmp/powerline-fonts
-
-- name: Install powerline fonts
-  shell: . ~/.tmp/powerline-fonts/install.sh
-
-- name: Create ~/.fonts directory
-  file:
-    path: ~/.fonts
-    state: directory
-
-- name: Get powerline symbols
-  get_url:
-    url: 'https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf'
-    dest: ~/.fonts/PowerlineSymbols.otf
-
-- name: Create ~/.config/fontconfig/conf.d directory
-  file:
-    path: ~/.config/fontconfig/conf.d
-    state: directory
-
-- name: Configure powerline symbols
-  get_url:
-    url: 'https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf'
-    dest: ~/.config/fontconfig/conf.d/
-
-- name: Set powerline font
-  shell: "cp ~/.local/share/fonts/'{{ powerline_font }}' ~/.fonts/'{{ powerline_font }}'"
-
-- name: Reload font cache
-  shell: fc-cache -vf ~/.fonts/
-
 - name: reload zshrc
-  shell: source ~/.zshrc
+  shell: "source ~/.zshrc"
   args:
     executable: /usr/bin/zsh
+  when: ansible_system == "Linux"
+
+- name: ensure ~/.profile is sourced in zshrc
+  lineinfile:
+    path: "/Users/{{ ansible_user_id }}/.zshrc"
+    line: 'source ~/.profile'
+
+- name: reload zshrc
+  shell: "source ~/.zshrc"
+  args:
+    executable: /bin/zsh
+  when: ansible_system == "Darwin"
+
+- name: reload shell
+  shell: exec $SHELL

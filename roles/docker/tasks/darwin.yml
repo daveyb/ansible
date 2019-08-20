@@ -1,0 +1,3 @@
+---
+- name: install docker
+  shell: brew cask install docker 

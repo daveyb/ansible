@@ -1,0 +1,13 @@
+---
+- name: fail if package_source is unspecified
+  fail:
+    msg: "package_source is not specified"
+  when: package_source is undefined
+
+- name: add source to apt 
+  lineinfile:
+    dest: /etc/apt/sources.list
+    line: "{{ package_source }}"
+  when: (ansible_os_family == "Debian") or
+        (ansible_os_family == "Ubuntu")
+  become: true

@@ -1,0 +1,11 @@
+---
+- name: Clone powerline fonts
+  git:
+    repo: "{{ powerline_fonts_repo }}"
+    dest: "{{ working_dir }}/{{ powerline_fonts_workdir }}"
+
+- include_tasks: linux.yml
+  when: ansible_system == "Linux"
+
+- include_tasks: darwin.yml
+  when: ansible_system == "Darwin"

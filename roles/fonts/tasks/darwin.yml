@@ -1,0 +1,6 @@
+---
+- name: install powerline patched font
+  shell: "cp '{{ working_dir }}/{{ powerline_fonts_workdir }}/{{ powerline_font_family }}/{{ powerline_font }}' ~/Library/Fonts/"
+
+- debug:
+    msg: "**NOTE** {{ powerline_font }} must be configured in terminal profile"

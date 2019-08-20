@@ -1,0 +1,35 @@
+---
+- name: Install docker prereqs
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - software-properties-common
+  become: true
+
+- name: enable docker in package repository
+  include_role:
+    name: packages
+  vars:
+    add_source: true
+    package_source: "{{ docker_source }}"
+
+- name: Add docker official GPG key
+  include_role:
+    name: packages
+  vars:
+    add_gpg: true
+    gpg_source: "{{ docker_gpg_source }}"
+    gpg_key_id: "{{ docker_gpg_key_id }}"
+
+- name: update packages 
+  include_role:
+    name: packages
+  vars:
+    update_cache: true
+
+- include_tasks: linux/docker-engine.yml
+
+- include_tasks: linux/docker-compose.yml

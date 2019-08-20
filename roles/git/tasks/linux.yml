@@ -1,0 +1,12 @@
+---
+- name: Install git
+  package:
+    name: git
+    state: latest
+  become: true
+
+- name: Install hub for git
+  package:
+    name: hub
+    state: latest
+  become: true
