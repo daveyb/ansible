@@ -42,4 +42,7 @@
     repo: https://github.com/vim-airline/vim-airline
     dest: ~/.vim/bundle/vim-airline
     
-  
+- name: clone vim-mustache-handlebars to ~/.vim/bundle
+  git:
+    repo: https://github.com/mustache/vim-mustache-handlebars.git
+    dest: ~/.vim/bundle/vim-mustache-handlebars 
