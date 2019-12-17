@@ -42,7 +42,7 @@
   become: true
 
 - name: Install powerline
-  shell: pip install --user git+git://github.com/powerline/powerline 
+  shell: pip3 install --user git+git://github.com/powerline/powerline 
   become: true
 
 - name: reload zshrc
