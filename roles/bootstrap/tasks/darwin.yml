@@ -40,9 +40,6 @@
     update_homebrew: yes
     upgrade_all: yes
 
-- name: enable homebrew cask
-  shell: brew tap caskroom/cask
-
 - name: install jq
   homebrew:
     name: jq
