@@ -1,9 +1,21 @@
+- name: Install Xcode Command Line Tools Catalina +
+  block:
+    - stat:
+        path: /Library/Developer/CommandLineTools
+      register: xcode
+
+    - name: Install Xcode Command Line Tools w/ UI
+      shell: xcode-select --install
+      when: not xcode.stat.exists
+
+  when: ansible_facts['distribution_version'] is version('10.15.0', '>=')
+
 - name: touch installondemand file
   file:
     state: touch
     path: /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
 
-- name: Install Xcode Command Line Tools
+- name: Install Xcode CLI Tools
   shell: |
     PROD=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
     softwareupdate -i "$PROD"
@@ -13,10 +25,10 @@
     state: absent
     path: /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
 
-- name: alias xcrun git to git in profile
+- name: alias xcrun git to git in zshrc
   copy:
     dest: "/Users/{{ ansible_user_id }}/.profile"
-    content: aliast git='xcrun git'
+    content: alias git='xcrun git'
 
 - name: ensure homebrew dir exists
   file:
@@ -32,16 +44,13 @@
 
 - name: add homebrew binaries to path
   copy:
-    dest: "/Users/{{ ansible_user_id }}/.profile"
+    dest: "/Users/{{ ansible_user }}/.profile"
     content: PATH=$PATH:/usr/local/homebrew/bin
 
 - name: update homebrew
   homebrew:
     update_homebrew: yes
     upgrade_all: yes
-
-- name: enable homebrew cask
-  shell: brew tap caskroom/cask
 
 - name: install jq
   homebrew:
