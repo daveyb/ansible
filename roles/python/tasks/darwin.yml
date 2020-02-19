@@ -4,9 +4,9 @@
     name: pyenv
     state: latest
 
-- name: shim pyenv into ~/.zshrc
+- name: shim pyenv into ~/.profile
   lineinfile:
-    path: "/Users/{{ ansible_user }}/.zshrc"
+    path: "/Users/{{ ansible_user }}/.profile"
     line: "export PATH=${PATH}:$(pyenv root)/shims"
     regexp: "^export PATH=${PATH}"
 
