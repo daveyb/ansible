@@ -1,5 +1,5 @@
 ---
-- name: install hub for git
+- name: install cli for github
   homebrew:
-    name: hub
+    name: github/gh/gh
     state: latest

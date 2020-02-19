@@ -5,7 +5,7 @@
     state: latest
   become: true
 
-- name: Install hub for git
+- name: Install cli for github
   package:
     name: hub
     state: latest
