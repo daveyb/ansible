@@ -46,3 +46,8 @@
   git:
     repo: https://github.com/mustache/vim-mustache-handlebars.git
     dest: ~/.vim/bundle/vim-mustache-handlebars 
+
+- name: clone vim-easy-align to ~/.vim/bundle/
+  git:
+    repo: https://github.com/junegunn/vim-easy-align
+    dest: ~/.vim/bundle/vim-easy-align
