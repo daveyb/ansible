@@ -6,21 +6,26 @@
 #- include_tasks: darwin.yml
 #  when: ansible_system == "Darwin"
 
-- name: clone pathogen to ~/.vim
-  git:
-    repo: 'https://github.com/tpope/vim-pathogen.git'
-    dest: ~/.vim/
-    force: yes
-
 - name: create ~/.vim directory
   file:
     path: ~/.vim
+    state: directory
+
+- name: create ~/.vim/autoload directory
+  file:
+    path: ~/.vim/autoload
     state: directory
 
 - name: create ~/.vim/bundle directory
   file:
     path: ~/.vim/bundle
     state: directory
+
+- name: copy pathogen to ~/.vim/autoload
+  get_url:
+    url: https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+    dest: ~/.vim/autoload
+    mode: '0744'
 
 - name: configure ~/.vimrc
   copy:
