@@ -4,3 +4,9 @@
     name: vim
     state: latest
   become: true
+
+- name: Install Silver Searcher
+  package:
+    name: silversearcher-ag
+    state: latest
+  become: true

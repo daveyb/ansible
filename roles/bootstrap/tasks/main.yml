@@ -1,6 +1,6 @@
 # Utility role for bootstrapping future roles
 # Linux runs as root
---- 
+---
 - name: ensure src dir exists
   file:
     path: /usr/local/src
@@ -8,11 +8,11 @@
     mode: 0755
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_gid }}"
-  become: yes
+  become: true
 
 - name: ensure shell profile exists
   file:
-    path: "/Users/{{ ansible_user_id }}/.profile"
+    path: ~/.profile
     state: touch
     mode: 0755
     owner: "{{ ansible_user_id }}"

@@ -3,13 +3,10 @@
   package:
     name: lshw
     state: latest
+  when: wsl_environment == false
 
 - name: Install kupfer
   package:
     name: kupfer
     state: latest
-
-- name: Install Silver Searcher
-  package:
-    name: silversearcher-ag
-    state: latest
+  when: wsl_environment == false

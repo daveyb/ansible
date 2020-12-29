@@ -5,7 +5,7 @@
   failed_when: dropbox_install_check.rc > 1
   changed_when: dropbox_install_check.rc == 1
   become: true
-  
+
 - name: download dropbox
   get_url:
     url: "{{ dropbox_url }}"

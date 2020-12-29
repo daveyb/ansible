@@ -5,6 +5,10 @@
 - include_tasks: darwin.yml
   when: ansible_system == "Darwin"
 
+- name: set fact for wsl environment
+  set_fact:
+    wsl_environment: "{{ wsl_environment }}"
+
 - name: template gitconfig
   template:
     src: "templates/gitconfig.j2"

@@ -1,10 +1,5 @@
 ---
 # common
-user:
-email:
+git_user:
+git_email:
 working_dir: /tmp
-
-# git
-github_user:
-
-

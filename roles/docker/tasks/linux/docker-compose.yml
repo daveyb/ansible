@@ -1,7 +1,7 @@
 ---
 - name: Determine latest release of docker-compose
   shell: >
-      curl -s https://api.github.com/repos/docker/compose/releases/latest | 
+      curl -s https://api.github.com/repos/docker/compose/releases/latest |
       jq -r ".assets[] |
       select(.name==\"docker-compose-{{ ansible_system }}-{{ ansible_machine }}\") |
       .browser_download_url"
@@ -15,7 +15,7 @@
   become: true
 
 - name: Create zsh autocomplete folder
-  file:  
+  file:
     path: ~/.zsh/completion/
     state: directory
 

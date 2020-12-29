@@ -7,3 +7,10 @@ colorize_script: solarized-mate.sh
 docker_source: "deb https://apt.dockerproject.org/repo/ debian-{{ ansible_distribution_release }} main"
 docker_gpg_source: "https://apt.dockerproject.org/gpg"
 docker_gpg_key_id: 58118E89F3A912897C070ADBF76221572C52609D
+
+gh_source: "deb https://cli.github.com/packages focal main"
+gh_gpg_source: "https://keyserver.ubuntu.com"
+gh_gpg_key_id: C99B11DEB97541F0
+
+# bool - set to "true" if executing Ansible playbook within Windows Subsystem for Linux
+wsl_environment: false

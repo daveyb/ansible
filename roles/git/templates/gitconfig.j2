@@ -1,6 +1,11 @@
+{% if wsl_environment %}
+[credential]
+  helper = manager
+  useHttpPath = true
+{% endif %}
 [user]
-  name = {{ user }}
-  email = {{ email }}
+  name = {{ git_user }}
+  email = {{ git_email }}
 [merge]
   tool = vimdiff
 [alias]
@@ -23,9 +28,5 @@
   editor = vim
   mergeoptions = --no-edit
   pager = cat
-[github]
-  user = {{ github_user }}
-[hub]
-  protocol = ssh
 [push]
   default = upstream

@@ -30,6 +30,6 @@
 
 - name: Set powerline font
   shell: "cp ~/.local/share/fonts/'{{ powerline_font }}' ~/.fonts/'{{ powerline_font }}'"
-    
+
 - name: Reload font cache
   shell: "fc-cache -vf ~/.fonts/"
