@@ -30,7 +30,7 @@
 - name: configure ~/.vimrc
   copy:
     src: "{{ role_path }}/files/vimrc"
-    dest: ~/.vimrc 
+    dest: ~/.vimrc
 
 - name: clone NERDTree to ~/.vim/bundle/
   git:
@@ -46,13 +46,19 @@
   git:
     repo: https://github.com/vim-airline/vim-airline
     dest: ~/.vim/bundle/vim-airline
-    
+
 - name: clone vim-mustache-handlebars to ~/.vim/bundle
   git:
     repo: https://github.com/mustache/vim-mustache-handlebars.git
-    dest: ~/.vim/bundle/vim-mustache-handlebars 
+    dest: ~/.vim/bundle/vim-mustache-handlebars
 
 - name: clone vim-easy-align to ~/.vim/bundle/
   git:
     repo: https://github.com/junegunn/vim-easy-align
     dest: ~/.vim/bundle/vim-easy-align
+
+- name: clone vim-ShowTrailingWhitespace to ~/.vim/bundle/
+  git:
+    repo: https://github.com/inkarkat/vim-ShowTrailingWhitespace
+    dest: ~/.vim/bundle/vim-ShowTrailingWhitespace
+    version: "stable"

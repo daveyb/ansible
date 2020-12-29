@@ -4,4 +4,3 @@
     name: zsh
     state: latest
   become: true
-

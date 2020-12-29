@@ -24,7 +24,7 @@
     gpg_source: "{{ docker_gpg_source }}"
     gpg_key_id: "{{ docker_gpg_key_id }}"
 
-- name: update packages 
+- name: update packages
   include_role:
     name: packages
   vars:

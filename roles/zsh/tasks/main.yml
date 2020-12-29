@@ -1,9 +1,9 @@
 ---
-- include_tasks: linux.yml                                       
+- include_tasks: linux.yml
   when: ansible_system == "Linux"
 
 - include_tasks: darwin.yml
-  when: ansible_system == "Darwin" 
+  when: ansible_system == "Darwin"
 
 - name: Clone oh-my-zsh
   git:
@@ -17,7 +17,7 @@
 - name: add bin search paths to PATH
   lineinfile:
     dest: "~/.zshrc"
-    insertafter: BOF 
+    insertafter: BOF
     line: 'export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
     state: present
 
@@ -45,11 +45,12 @@
     line: 'prompt_context () {prompt_segment black default "%t"}'
 
 - name: Change shell to zsh
-  shell: chsh -s /bin/zsh
+  shell: chsh -s $(which zsh)
   become: true
 
 - name: Install powerline
-  shell: pip install --user git+git://github.com/powerline/powerline
+  pip:
+    name: powerline-status
   become: true
 
 - name: reload zshrc

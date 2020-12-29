@@ -1,5 +1,5 @@
 ---
-- include_tasks: update.yml 
+- include_tasks: update.yml
   when: update_cache is defined
 
 - include_tasks: source.yml

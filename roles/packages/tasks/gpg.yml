@@ -2,12 +2,12 @@
 - name: fail if gpg_source is unspecified
   fail:
     msg: "gpg_source is not specified"
-  when:  gpg_source is undefined
+  when: gpg_source is undefined
 
 - name: fail if gpg_key_id is unspecified
   fail:
     msg: "gpg_key_id is not specified"
-  when:  gpg_key_id is undefined
+  when: gpg_key_id is undefined
 
 - name: Add GPG key to apt
   apt_key:

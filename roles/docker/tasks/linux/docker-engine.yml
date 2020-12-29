@@ -12,4 +12,4 @@
   become: true
 
 - debug:
-      msg: "Logoff/Logon required for {{ ansible_user_id }} before group changes will take effect"
+  msg: "Logoff/Logon required for {{ ansible_user_id }} before group changes will take effect"
