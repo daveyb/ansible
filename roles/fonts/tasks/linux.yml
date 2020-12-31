@@ -5,8 +5,10 @@
     state: latest
   become: true
 
-- name: Install powerline fonts
-  shell: ". {{ working_dir }}/powerline-fonts/install.sh"
+- name: Install powerline font
+  command: "{{ working_dir }}/powerline-fonts/install.sh {{ powerline_font }}"
+  args:
+    chdir: "{{ working_dir }}/powerline-fonts"
 
 - name: Create ~/.fonts directory
   file:
