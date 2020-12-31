@@ -51,7 +51,6 @@
 - name: Install powerline
   pip:
     name: powerline-status
-  become: true
 
 - name: reload zshrc
   shell: "source ~/.zshrc"

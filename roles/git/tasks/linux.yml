@@ -44,6 +44,6 @@
     dest: /usr/bin/git-credential-manager
     owner: root
     group: root
-    mode: '0644'
-  when: wsl_environment == true
+    mode: '0755'
+  when: wsl_environment
   become: true
