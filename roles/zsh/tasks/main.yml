@@ -48,6 +48,15 @@
   shell: chsh -s $(which zsh)
   become: true
 
+- name: shim zsh into ~/.bash_profile
+  lineinfile:
+    path: ~/.bash_profile
+    insertbefore: EOF
+    line: |
+      if test -t 1; then
+        exec zsh
+      fi
+
 - name: Install powerline
   pip:
     name: powerline-status
