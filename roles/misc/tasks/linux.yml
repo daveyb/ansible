@@ -10,3 +10,9 @@
     name: kupfer
     state: latest
   when: wsl_environment == false
+
+- name: Install direnv
+  package:
+    name: direnv
+    state: latest
+  become: true

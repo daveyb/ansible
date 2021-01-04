@@ -46,3 +46,8 @@
   homebrew:
     name: kubernetes-helm
     state: latest
+
+- name: install direnv
+  homebrew:
+    name: direnv
+    state: latest
