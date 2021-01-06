@@ -27,10 +27,15 @@
     dest: ~/.vim/autoload
     mode: '0744'
 
-- name: configure ~/.vimrc
-  copy:
-    src: "{{ role_path }}/files/vimrc"
+- name: set fact for wsl environment
+  set_fact:
+    wsl_environment: "{{ wsl_environment }}"
+
+- name: template vimrc
+  template:
+    src: "templates/vimrc.j2"
     dest: ~/.vimrc
+    force: true
 
 - name: clone NERDTree to ~/.vim/bundle/
   git:

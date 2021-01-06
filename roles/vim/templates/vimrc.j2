@@ -56,3 +56,8 @@ nmap ga <Plug>(EasyAlign)
 
 " vim-ShowTrailingWhitespace
 highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
+
+{% if wsl_environment %}
+" WSL/Windows keybinding overrides
+:imap <silent> <C-v> <C-ALT-v>
+{% endif %}
