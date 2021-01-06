@@ -3,3 +3,8 @@
   homebrew:
     name: zsh
     state: latest
+
+- name: install direnv
+  homebrew:
+    name: direnv
+    state: latest
