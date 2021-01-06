@@ -44,18 +44,21 @@
     dest: "~/.zshrc"
     line: 'prompt_context () {prompt_segment black default "%t"}'
 
+- name: Exec direnv at login
+  lineinfile:
+    dest: "~/.zshrc"
+    line: 'eval "$(direnv hook zsh)"'
+
 - name: Change shell to zsh
   shell: chsh -s $(which zsh)
   become: true
 
 - name: shim zsh into ~/.bash_profile
   lineinfile:
-    path: ~/.bash_profile
+    dest: "~/.bash_profile"
+    line: "if test -t 1; then; exec zsh; fi"
     insertbefore: EOF
-    line: |
-      if test -t 1; then
-        exec zsh
-      fi
+    state: present
 
 - name: Install powerline
   pip:
