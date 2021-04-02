@@ -5,8 +5,45 @@
     state: latest
   become: true
 
+- name: Add github cli official GPG key
+  apt_key:
+    keyserver: "{{ gh_gpg_source }}"
+    id: "{{ gh_gpg_key_id }}"
+    state: present
+  when: (ansible_os_family == "Debian") or
+        (ansible_os_family == "Ubuntu")
+  become: true
+
+- name: enable github cli source in package repository
+  include_role:
+    name: packages
+  vars:
+    add_source: true
+    package_source: "{{ gh_source }}"
+
+- name: update packages
+  include_role:
+    name: packages
+  vars:
+    update_cache: true
+
 - name: Install cli for github
   package:
-    name: hub
+    name: gh
     state: latest
+  become: true
+
+- name: install pre-commit for git
+  pip:
+    name: pre-commit
+
+# Note: there is an external dependency here - you must have git-credential-manager-core installed in Windows!!!
+- name: alias Windows git-credential-manager-core into WSL environment
+  copy:
+    src: "{{ role_path}}/files/git-credential-manager"
+    dest: /usr/bin/git-credential-manager
+    owner: root
+    group: root
+    mode: '0755'
+  when: wsl_environment
   become: true

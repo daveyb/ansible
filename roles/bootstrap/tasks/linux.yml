@@ -8,6 +8,7 @@
   package:
     name: xclip
     state: latest
+  when: wsl_environment == false
 
 - name: Install curl
   package:
@@ -18,3 +19,4 @@
   package:
     name: jq
     state: latest
+  become: true

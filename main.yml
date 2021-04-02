@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
   - debug:
-      msg: vars
+      msg: "{{ vars }}"
   - name: Group all hosts by os
     group_by: key={{ ansible_os_family }}
   tags:
@@ -25,10 +25,10 @@
 - name: Install fonts
   hosts: all
   roles:
-    - fonts
+  - fonts
   tags:
-    - fonts
-  
+  - fonts
+
 - name: Configure shell
   hosts: all
   roles:
@@ -50,37 +50,23 @@
   tags:
   - vim
 
-- name: Install chrome
-  hosts: all
-  roles:
-    - chrome
-  tags:
-    - chrome
-  
-- name: Install docker
-  hosts: all
-  roles:
-    - docker
-  tags:
-    - docker
-
 - name: Install misc packages
   hosts: all
   roles:
-    - misc
+  - misc
   tags:
-    - misc
+  - misc
 
 - name: AWS stuff
   hosts: all
   roles:
-    - aws
+  - aws
   tags:
-    - aws
+  - aws
 
 - name: Python stuff
   hosts: all
   roles:
-    - python
+  - python
   tags:
-    - python
+  - python

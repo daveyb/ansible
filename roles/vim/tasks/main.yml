@@ -6,15 +6,14 @@
 #- include_tasks: darwin.yml
 #  when: ansible_system == "Darwin"
 
-- name: clone pathogen to ~/.vim
-  git:
-    repo: 'https://github.com/tpope/vim-pathogen.git'
-    dest: ~/.vim/
-    force: yes
-
 - name: create ~/.vim directory
   file:
     path: ~/.vim
+    state: directory
+
+- name: create ~/.vim/autoload directory
+  file:
+    path: ~/.vim/autoload
     state: directory
 
 - name: create ~/.vim/bundle directory
@@ -22,10 +21,21 @@
     path: ~/.vim/bundle
     state: directory
 
-- name: configure ~/.vimrc
-  copy:
-    src: "{{ role_path }}/files/vimrc"
-    dest: ~/.vimrc 
+- name: copy pathogen to ~/.vim/autoload
+  get_url:
+    url: https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+    dest: ~/.vim/autoload
+    mode: '0744'
+
+- name: set fact for wsl environment
+  set_fact:
+    wsl_environment: "{{ wsl_environment }}"
+
+- name: template vimrc
+  template:
+    src: "templates/vimrc.j2"
+    dest: ~/.vimrc
+    force: true
 
 - name: clone NERDTree to ~/.vim/bundle/
   git:
@@ -41,8 +51,19 @@
   git:
     repo: https://github.com/vim-airline/vim-airline
     dest: ~/.vim/bundle/vim-airline
-    
+
 - name: clone vim-mustache-handlebars to ~/.vim/bundle
   git:
     repo: https://github.com/mustache/vim-mustache-handlebars.git
-    dest: ~/.vim/bundle/vim-mustache-handlebars 
+    dest: ~/.vim/bundle/vim-mustache-handlebars
+
+- name: clone vim-easy-align to ~/.vim/bundle/
+  git:
+    repo: https://github.com/junegunn/vim-easy-align
+    dest: ~/.vim/bundle/vim-easy-align
+
+- name: clone vim-ShowTrailingWhitespace to ~/.vim/bundle/
+  git:
+    repo: https://github.com/inkarkat/vim-ShowTrailingWhitespace
+    dest: ~/.vim/bundle/vim-ShowTrailingWhitespace
+    version: "stable"

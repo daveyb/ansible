@@ -1,4 +1,4 @@
 ---
 slack_version: '2.3.3'
-slack_package_name: 'slack-desktop-{{ slack_version }}-amd64.deb' 
+slack_package_name: 'slack-desktop-{{ slack_version }}-amd64.deb'
 slack_debian_url: 'https://downloads.slack-edge.com/linux_releases/{{ slack_package_name }}'

@@ -5,3 +5,8 @@
     state: latest
   become: true
 
+- name: Install direnv
+  package:
+    name: direnv
+    state: latest
+  become: true

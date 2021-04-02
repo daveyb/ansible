@@ -1,3 +1,4 @@
 ---
 - name: install docker
-  shell: brew cask install docker 
+  shell: brew cask install docker
+  ignore_errors: yes

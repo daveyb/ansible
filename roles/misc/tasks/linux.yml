@@ -3,13 +3,16 @@
   package:
     name: lshw
     state: latest
+  when: wsl_environment == false
 
 - name: Install kupfer
   package:
     name: kupfer
     state: latest
+  when: wsl_environment == false
 
-- name: Install Silver Searcher
+- name: Install direnv
   package:
-    name: silversearcher-ag
+    name: direnv
     state: latest
+  become: true

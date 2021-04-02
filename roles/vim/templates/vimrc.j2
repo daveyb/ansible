@@ -10,6 +10,7 @@ autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+au BufRead,BufNewFile *.hcl set filetype=tf
 
 " appearance
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
@@ -47,3 +48,17 @@ nnoremap \ :Ag<SPACE>
 
 " vim-mustache-handlebars config
 let g:mustache_abbreviations = 1
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" vim-ShowTrailingWhitespace
+highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
+
+{% if wsl_environment %}
+" WSL/Windows keybinding overrides
+:imap <silent> <C-v> <C-ALT-v>
+{% endif %}

@@ -4,7 +4,7 @@
     msg: "package_source is not specified"
   when: package_source is undefined
 
-- name: add source to apt 
+- name: add source to apt
   lineinfile:
     dest: /etc/apt/sources.list
     line: "{{ package_source }}"

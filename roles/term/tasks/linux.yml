@@ -10,6 +10,7 @@
   git:
     repo: "{{ colorize_repo }}"
     dest: "{{ working_dir }}/{{ colorize_repo | to_uuid }}"
+  when: wsl_environment == false
 
 - name: Make colorize script directory executable
   file:
@@ -17,9 +18,10 @@
     state: directory
     recurse: yes
     mode: 0500
+  when: wsl_environment == false
 
 - name: Execute colorize script
   shell: "{{ colorize_script | quote }}"
   args:
     chdir: "{{ working_dir }}/{{ colorize_repo | to_uuid }}"
-
+  when: wsl_environment == false
