@@ -1,7 +1,7 @@
 ---
 - name: install cli for github
   homebrew:
-    name: github/gh/gh
+    name: gh
     state: latest
 
 # http://pre-commit.com

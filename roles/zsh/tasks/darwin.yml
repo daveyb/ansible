@@ -8,3 +8,11 @@
   homebrew:
     name: direnv
     state: latest
+
+- name: ensure ~/.bash_profile exists
+  file:
+    path: "/Users/{{ ansible_user_id }}/.bash_profile"
+    state: touch
+    mode: 0755
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"

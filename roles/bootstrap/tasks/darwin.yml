@@ -30,21 +30,30 @@
     dest: "/Users/{{ ansible_user_id }}/.profile"
     content: alias git='xcrun git'
 
-- name: ensure homebrew dir exists
-  file:
-    path: /usr/local/homebrew
-    state: directory
-    mode: 0755
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_gid }}"
-  become: yes
+- name: curl homebrew
+  block:
+    - stat:
+        path: /usr/local/homebrew
+      register: homebrew
 
-- name: install homebrew
-  shell: cd /usr/local/src && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /usr/local/homebrew
+    - shell: rm -rf /usr/local/homebrew
+      when: homebrew.stat.exists
+      become: yes
+
+    - name: ensure homebrew dir exists
+      file:
+        path: /usr/local/homebrew
+        state: directory
+        mode: 0755
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_gid }}"
+      become: yes
+
+    - shell: cd /usr/local/src && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /usr/local/homebrew
 
 - name: add homebrew binaries to path
   copy:
-    dest: "/Users/{{ ansible_user }}/.profile"
+    dest: "/Users/{{ ansible_user_id }}/.profile"
     content: PATH=$PATH:/usr/local/homebrew/bin
 
 - name: update homebrew
