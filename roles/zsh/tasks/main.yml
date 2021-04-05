@@ -63,6 +63,7 @@
 - name: Install powerline
   pip:
     name: powerline-status
+    executable: pip3
 
 - name: reload zshrc
   shell: "source ~/.zshrc"

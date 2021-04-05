@@ -7,7 +7,7 @@
 
 - name: set fact for wsl environment
   set_fact:
-    wsl_environment: "{{ wsl_environment }}"
+    wsl_environment: "{{ wsl_environment | default('false') }}"
 
 - name: template gitconfig
   template:
