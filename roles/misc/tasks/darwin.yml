@@ -46,3 +46,13 @@
   homebrew:
     name: kubernetes-helm
     state: latest
+
+- name: check if privileges cli app is installed (corporate nanny)
+  command: /Applications/Privileges.app/Contents/Resources/PrivilegesCLI --help
+  register: privs_install_check
+
+- name: add privileges app alias
+  lineinfile:
+    dest: "~/.zshrc"
+    line : alias privs=/Applications/Privileges.app/Contents/Resources/PrivilegesCLI
+  when: privs_install_check.rc == 1
