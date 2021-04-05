@@ -4,20 +4,10 @@
     name: the_silver_searcher
     state: latest
 
-- name: install royal-tsx
-  shell: brew cask install royal-tsx
-
-- name: install slack
-  shell: brew cask install slack
-  ignore_errors: yes # preinstalled version causing error
-
 - name: install fswatch
   homebrew:
     name: fswatch
     state: latest
-
-- name: install vagrant
-  shell: brew cask install vagrant
 
 - name: autohide OSX dock
   shell: defaults write com.apple.dock autohide true

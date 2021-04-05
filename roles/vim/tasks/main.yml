@@ -29,7 +29,7 @@
 
 - name: set fact for wsl environment
   set_fact:
-    wsl_environment: "{{ wsl_environment }}"
+    wsl_environment: "{{ wsl_environment | default('false') }}"
 
 - name: template vimrc
   template:
@@ -41,26 +41,31 @@
   git:
     repo: 'https://github.com/scrooloose/nerdtree.git'
     dest: ~/.vim/bundle/nerdtree
+    force: yes
 
 - name: clone vim-sensible to ~/.vim/bundle/
   git:
     repo: 'https://github.com/tpope/vim-sensible.git'
     dest: ~/.vim/bundle/vim-sensible
+    force: yes
 
 - name: clone vim-airline to ~/.vim/bundle/
   git:
     repo: https://github.com/vim-airline/vim-airline
     dest: ~/.vim/bundle/vim-airline
+    force: yes
 
 - name: clone vim-mustache-handlebars to ~/.vim/bundle
   git:
     repo: https://github.com/mustache/vim-mustache-handlebars.git
     dest: ~/.vim/bundle/vim-mustache-handlebars
+    force: yes
 
 - name: clone vim-easy-align to ~/.vim/bundle/
   git:
     repo: https://github.com/junegunn/vim-easy-align
     dest: ~/.vim/bundle/vim-easy-align
+    force: yes
 
 - name: clone vim-ShowTrailingWhitespace to ~/.vim/bundle/
   git:
