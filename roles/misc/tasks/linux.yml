@@ -16,3 +16,9 @@
     name: direnv
     state: latest
   become: true
+
+- name: Install tree
+  package:
+    name: tree
+    state: latest
+  become: true
