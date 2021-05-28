@@ -50,4 +50,4 @@
   lineinfile:
     dest: "~/.zshrc"
     line : alias privs=/Applications/Privileges.app/Contents/Resources/PrivilegesCLI
-  when: privs_install_check.rc == 1
+  when: privs_install_check.rc == 0

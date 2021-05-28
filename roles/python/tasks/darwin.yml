@@ -1,19 +1,14 @@
 ---
-- name: install pyenv
-  homebrew:
-    name: pyenv
-    state: latest
-
-- name: shim pyenv into ~/.profile
-  lineinfile:
-    path: "/Users/{{ ansible_user_id }}/.profile"
-    line: "export PATH=${PATH}:$(pyenv root)/shims"
-    regexp: "^export PATH=${PATH}"
-
-- name: Add pyenv to .profile
-  lineinfile:
-    dest: "/Users/{{ ansible_user_id }}/.profile"
-    line: 'eval "$(pyenv init -)"'
+#- name: shim pyenv into ~/.profile
+#  lineinfile:
+#    path: "/Users/{{ ansible_user_id }}/.profile"
+#    line: "export PATH=${PATH}:$(pyenv root)/shims"
+#    regexp: "^export PATH=${PATH}"
+#
+#- name: Add pyenv to .profile
+#  lineinfile:
+#    dest: "/Users/{{ ansible_user_id }}/.profile"
+#    line: 'eval "$(pyenv init -)"'
 
 # NOTE: CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv install 3.7.3
 # If you're getting compilation errors caused by xcode cli tools

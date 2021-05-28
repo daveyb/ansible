@@ -72,3 +72,8 @@
     repo: https://github.com/inkarkat/vim-ShowTrailingWhitespace
     dest: ~/.vim/bundle/vim-ShowTrailingWhitespace
     version: "stable"
+
+- name: clone colorscheme to ~/.vim/bundle/
+  git:
+    repo: https://github.com/morhetz/gruvbox.git
+    dest: ~/.vim/bundle/gruvbox

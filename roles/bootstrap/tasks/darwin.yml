@@ -54,12 +54,11 @@
 - name: add homebrew binaries to path
   copy:
     dest: "/Users/{{ ansible_user_id }}/.profile"
-    content: PATH=$PATH:/usr/local/homebrew/bin
+    content: export PATH=$PATH:/usr/local/homebrew/bin
 
 - name: update homebrew
   homebrew:
     update_homebrew: yes
-    upgrade_all: yes
 
 - name: install jq
   homebrew:
