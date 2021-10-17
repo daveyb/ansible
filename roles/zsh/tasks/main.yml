@@ -49,6 +49,12 @@
     dest: "~/.zshrc"
     line: 'eval "$(direnv hook zsh)"'
 
+- name: Add oh-my-posh-wsl theme
+  lineinfile:
+    dest: "~/.zshrc"
+    line: 'eval "$(oh-my-posh-wsl --init --shell zsh --config /mnt/c/Users/david/AppData/Local/Programs/oh-my-posh/themes/agnoster.omp.json)"'
+  when: wsl_environment
+
 - name: Change shell to zsh
   shell: chsh -s $(which zsh)
   become: true
@@ -56,7 +62,7 @@
 - name: shim zsh into ~/.bash_profile
   lineinfile:
     dest: "~/.bash_profile"
-    line: "if test -t 1; then; exec zsh; fi"
+    line: "if [ -t 1 ]; then exec zsh; fi"
     insertbefore: EOF
     state: present
 

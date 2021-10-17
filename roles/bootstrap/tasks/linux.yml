@@ -14,6 +14,7 @@
   package:
     name: curl
     state: latest
+  become: true
 
 - name: Install jq
   package:
