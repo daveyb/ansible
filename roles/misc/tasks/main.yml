@@ -4,3 +4,30 @@
 
 - include_tasks: darwin.yml
   when: ansible_system == "Darwin"
+
+- name: curl terraform-docs
+  block:
+    - stat:
+        path: /usr/local/terraform-docs
+      register: terraformdocs
+
+    - shell: rm -rf /usr/local/terraform-docs
+      when: terraformdocs.stat.exists
+      become: yes
+
+    - name: ensure terraform dir exists
+      file:
+        path: /usr/local/terraform-docs
+        state: directory
+        mode: 0755
+        owner: "{{ ansible_user_id }}"
+        group: "{{ ansible_user_gid }}"
+      become: yes
+
+    - shell: cd /usr/local/src && curl -Lo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.16.0/terraform-docs-v0.16.0-{{ ansible_system | lower }}-amd64.tar.gz | tar -xzf terraform-docs.tar.gz -C /usr/local/terraform-docs
+
+    - name: Symlink terraform-docs
+      ansible.builtin.file:
+        src: /usr/local/terraform-docs/terraform-docs
+        dest: ~/.local/bin/terraform-docs
+        state: link
