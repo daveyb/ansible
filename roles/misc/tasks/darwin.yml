@@ -22,10 +22,10 @@
     name: kubernetes-cli
     state: latest
 
-- name: install k9s
-  homebrew:
-    name: derailed/k9s/k9s
-    state: latest
+      #- name: install k9s
+      #  homebrew:
+      #    name: derailed/k9s/k9s
+      #    state: latest
 
 - name: install kubectx
   homebrew:
