@@ -5,7 +5,7 @@ filetype plugin indent on
 
 " editor settings
 set nu
-set ts=2 sts=2 sw=2 expandtab 
+set ts=2 sts=2 sw=2 expandtab
 autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -20,6 +20,21 @@ endfunction
 
 call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
 let g:NERDTreeNodeDelimiter = "\u00a0"
+
+:set guicursor=n-v-c:blinkon0-block-Cursor/lCursor
+
+" Use a line cursor within insert mode and a block cursor everywhere else.
+"
+" Reference chart of values:
+"   Ps = 0  -> blinking block.
+"   Ps = 1  -> blinking block (default).
+"   Ps = 2  -> steady block.
+"   Ps = 3  -> blinking underline.
+"   Ps = 4  -> steady underline.
+"   Ps = 5  -> blinking bar (xterm).
+"   Ps = 6  -> steady bar (xterm).
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 
 " filetype settings
 
@@ -62,3 +77,6 @@ highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
 " WSL/Windows keybinding overrides
 :imap <silent> <C-v> <C-ALT-v>
 {% endif %}
+
+" gruvbox
+autocmd vimenter * ++nested colorscheme gruvbox

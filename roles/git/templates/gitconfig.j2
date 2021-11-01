@@ -3,6 +3,11 @@
   helper = manager
   useHttpPath = true
 {% endif %}
+{% if ansible_system == "Darwin" %}
+[credential]
+  helper = manager-core
+  useHttpPath = true
+{% endif %}
 [user]
   name = {{ git_user }}
   email = {{ git_email }}
