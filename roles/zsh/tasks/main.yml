@@ -52,7 +52,7 @@
 - name: Add oh-my-posh-wsl theme
   lineinfile:
     dest: "~/.zshrc"
-    line: 'eval "$(oh-my-posh-wsl --init --shell zsh --config /mnt/c/Users/dbenedic-insight/AppData/Local/Programs/oh-my-posh/themes/patriksvensson.omp.json)"'
+    line: 'eval "$(oh-my-posh-wsl --init --shell zsh --config /mnt/c/Users/{{ wsl_windows_user }}/AppData/Local/Programs/oh-my-posh/themes/{{ oh_my_posh_theme }}.omp.json)"'
   when: wsl_environment
 
 - name: Change shell to zsh

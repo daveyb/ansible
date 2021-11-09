@@ -27,4 +27,4 @@ It's designed to init new dotfiles as needed, so be aware that it may clobber ex
 `ansible-playbook -i hosts main.yml --ask-become-pass -t git -e"git_user=MeMeMeMe" -e"git_email=me@me.com"`
 
 ### Run all plays in Windows Subsystem for Linux
-`ansible-playbook -i hosts main.yml --ask-become-pass -e"wsl_environment=true"`
+`ansible-playbook -i hosts main.yml --ask-become-pass -e"wsl_environment=true" -e"wsl_windows_user=MeMeMe"`

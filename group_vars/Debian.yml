@@ -14,3 +14,5 @@ gh_gpg_key_id: C99B11DEB97541F0
 
 # bool - set to "true" if executing Ansible playbook within Windows Subsystem for Linux
 wsl_environment: false
+# Windows user - set to yours with `-e"wsl_windows_user=<your user account name>"`
+wsl_windows_user: 'dbenedic-insight'
