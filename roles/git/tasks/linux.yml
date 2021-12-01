@@ -33,6 +33,12 @@
     state: latest
   become: true
 
+- name: Install git-lfs for large file support
+  package:
+    name: git-lfs
+    state: latest
+  become: true
+
 - name: install pre-commit for git
   pip:
     name: pre-commit
