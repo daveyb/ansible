@@ -51,6 +51,8 @@
 
     - shell: cd /usr/local/src && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /usr/local/homebrew
 
+    - shell: sudo chown -R $(whoami) /usr/local/share/man/man8
+
 - name: add homebrew binaries to path
   copy:
     dest: "/Users/{{ ansible_user_id }}/.profile"
@@ -59,6 +61,11 @@
 - name: update homebrew
   homebrew:
     update_homebrew: yes
+
+- name: install coreutils
+  homebrew:
+    name: coreutils
+    state: latest
 
 - name: install jq
   homebrew:
