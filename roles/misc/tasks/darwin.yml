@@ -45,6 +45,7 @@
 - name: check if privileges cli app is installed (corporate nanny)
   command: /Applications/Privileges.app/Contents/Resources/PrivilegesCLI --help
   register: privs_install_check
+  ignore_errors: yes
 
 - name: add privileges app alias
   lineinfile:
