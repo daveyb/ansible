@@ -36,7 +36,10 @@
         path: /usr/local/homebrew
       register: homebrew
 
-    - shell: rm -rf /usr/local/homebrew
+    - name: rm -rf /usr/local/homebrew
+      file:
+        path: /usr/local/homebrew
+        state: absent
       when: homebrew.stat.exists
       become: yes
 
@@ -52,6 +55,19 @@
     - shell: cd /usr/local/src && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /usr/local/homebrew
 
     - shell: sudo chown -R $(whoami) /usr/local/share/man/man8
+
+    - name: check if man8 file exists
+      stat:
+        path: /usr/local/share/man/man8
+      register: man8
+      ignore_errors: yes
+
+    - name: change ownership on man8
+      file:
+        path: /usr/local/share/man/man8
+        owner: "{{ ansible_user_id }}"
+      when: man8.stat.exists
+      become: yes
 
 - name: add homebrew binaries to path
   copy:
