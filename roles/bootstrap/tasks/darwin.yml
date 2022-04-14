@@ -54,6 +54,8 @@
 
     - shell: cd /usr/local/src && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /usr/local/homebrew
 
+    - shell: sudo chown -R $(whoami) /usr/local/share/man/man8
+
     - name: check if man8 file exists
       stat:
         path: /usr/local/share/man/man8
