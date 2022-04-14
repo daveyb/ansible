@@ -16,6 +16,12 @@
     name: pre-commit
     state: latest
 
+# http://pre-commit.com
+- name: install pre-commit for git
+  homebrew:
+    name: pre-commit
+    state: latest
+
 # Manages HTTPS-based credentials (required for many SSO orgs)
 - name: install microsoft's git-credential-manager-core
   block:
