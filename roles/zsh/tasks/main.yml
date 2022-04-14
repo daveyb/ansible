@@ -28,6 +28,12 @@
     line: 'source ~/.profile'
     state: present
 
+- name: Download theme
+  get_url:
+    url: "{{ zsh_theme_url }}"
+    dest: "{{ local_omz_repo }}/themes/"
+  when: zsh_theme_url != ""
+
 - name: Set zsh theme
   lineinfile:
     dest: "~/.zshrc"

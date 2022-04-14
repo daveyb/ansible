@@ -1,9 +1,4 @@
 ---
-- name: install pyenv
-  homebrew:
-    name: pyenv
-    state: latest
-
 - name: shim pyenv into ~/.profile
   lineinfile:
     path: "/Users/{{ ansible_user_id }}/.profile"
