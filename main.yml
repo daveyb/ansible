@@ -70,3 +70,10 @@
   - python
   tags:
   - python
+
+- name: Go stuff
+  hosts: all
+  roles:
+  - golang
+  tags:
+  - golang

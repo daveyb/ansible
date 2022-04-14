@@ -73,6 +73,11 @@
     dest: ~/.vim/bundle/vim-ShowTrailingWhitespace
     version: "stable"
 
+- name: clone vim-go to ~/.vim/bundle/
+  git:
+    repo: https://github.com/fatih/vim-go.git
+    dest: ~/.vim/bundle/vim-go
+
 - name: clone colorscheme to ~/.vim/bundle/
   git:
     repo: https://github.com/morhetz/gruvbox.git
