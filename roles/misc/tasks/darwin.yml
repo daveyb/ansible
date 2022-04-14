@@ -24,7 +24,7 @@
 
 - name: install k9s
   homebrew:
-    name: derailed/k9s/k9s
+    name: k9s
     state: latest
 
 - name: install kubectx
@@ -45,9 +45,10 @@
 - name: check if privileges cli app is installed (corporate nanny)
   command: /Applications/Privileges.app/Contents/Resources/PrivilegesCLI --help
   register: privs_install_check
+  ignore_errors: yes
 
 - name: add privileges app alias
   lineinfile:
     dest: "~/.zshrc"
     line : alias privs=/Applications/Privileges.app/Contents/Resources/PrivilegesCLI
-  when: privs_install_check.rc == 1
+  when: privs_install_check.rc == 0

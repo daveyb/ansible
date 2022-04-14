@@ -77,4 +77,8 @@
   git:
     repo: https://github.com/fatih/vim-go.git
     dest: ~/.vim/bundle/vim-go
-    version: "latest"
+
+- name: clone colorscheme to ~/.vim/bundle/
+  git:
+    repo: https://github.com/morhetz/gruvbox.git
+    dest: ~/.vim/bundle/gruvbox

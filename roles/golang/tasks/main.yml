@@ -1,0 +1,26 @@
+---
+- name: create ~/.goenv directory
+  file:
+    path: ~/.goenv
+    state: directory
+
+- name: clone goenv to ~/.goenv
+  git:
+    repo: https://github.com/syndbg/goenv.git
+    dest: ~/.goenv
+    force: yes
+
+- name: Add GOENV_ROOT to zshrc
+  lineinfile:
+    dest: "~/.zshrc"
+    line: "export GOENV_ROOT=${HOME}/.goenv"
+
+- name: Add GOENV to PATH
+  lineinfile:
+    dest: "~/.zshrc"
+    line: "export PATH=${GOENV_ROOT}/bin:${PATH}"
+
+- name: Add goenv eval to zshrc
+  lineinfile:
+    dest: "~/.zshrc"
+    line: 'eval "$(goenv init -)"'

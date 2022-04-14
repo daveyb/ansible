@@ -22,6 +22,21 @@ endfunction
 call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
 let g:NERDTreeNodeDelimiter = "\u00a0"
 
+:set guicursor=n-v-c:blinkon0-block-Cursor/lCursor
+
+" Use a line cursor within insert mode and a block cursor everywhere else.
+"
+" Reference chart of values:
+"   Ps = 0  -> blinking block.
+"   Ps = 1  -> blinking block (default).
+"   Ps = 2  -> steady block.
+"   Ps = 3  -> blinking underline.
+"   Ps = 4  -> steady underline.
+"   Ps = 5  -> blinking bar (xterm).
+"   Ps = 6  -> steady bar (xterm).
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
 " filetype settings
 
 " plugins
@@ -63,3 +78,6 @@ highlight ShowTrailingWhitespace ctermbg=Red guibg=Red
 " WSL/Windows keybinding overrides
 :imap <silent> <C-v> <C-ALT-v>
 {% endif %}
+
+" gruvbox
+autocmd vimenter * ++nested colorscheme gruvbox
