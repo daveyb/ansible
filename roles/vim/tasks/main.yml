@@ -71,7 +71,7 @@
   git:
     repo: https://github.com/inkarkat/vim-ShowTrailingWhitespace
     dest: ~/.vim/bundle/vim-ShowTrailingWhitespace
-    version: "stable"
+    version: 1.11
 
 - name: clone vim-go to ~/.vim/bundle/
   git:

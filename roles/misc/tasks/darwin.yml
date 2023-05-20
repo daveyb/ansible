@@ -32,11 +32,6 @@
     name: kubectx
     state: latest
 
-- name: install helm
-  homebrew:
-    name: kubernetes-helm
-    state: latest
-
 - name: install direnv
   homebrew:
     name: direnv

@@ -33,59 +33,24 @@
 - name: curl homebrew
   block:
     - stat:
-        path: /usr/local/homebrew
+        path: /opt/homebrew
       register: homebrew
 
-    - name: rm -rf /usr/local/homebrew
-      file:
-        path: /usr/local/homebrew
-        state: absent
-      when: homebrew.stat.exists
-      become: yes
-
-    - name: ensure homebrew dir exists
-      file:
-        path: /usr/local/homebrew
-        state: directory
-        mode: 0755
+    - name: make /opt/homebrew directory
+      ansible.builtin.file:
+        path: /opt/homebrew
         owner: "{{ ansible_user_id }}"
         group: "{{ ansible_user_gid }}"
-      become: yes
-
-    - shell: cd /usr/local/src && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /usr/local/homebrew
-
-    - name: check if man8 file exists
-      stat:
-        path: /usr/local/share/man/man8
-      register: man8
-      ignore_errors: yes
-
-    - name: change ownership on man8
-      file:
-        path: /usr/local/share/man/man8
-        owner: "{{ ansible_user_id }}"
-      when: man8.stat.exists
-      become: yes
-
-    - shell: rm -rf /usr/local/homebrew
-      when: homebrew.stat.exists
-      become: yes
-
-    - name: ensure homebrew dir exists
-      file:
-        path: /usr/local/homebrew
+        mode: '0755'
         state: directory
-        mode: 0755
-        owner: "{{ ansible_user_id }}"
-        group: "{{ ansible_user_gid }}"
+      when: not homebrew.stat.exists
       become: yes
 
-    - shell: cd /usr/local/src && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /usr/local/homebrew
-
-- name: add homebrew binaries to path
-  copy:
-    dest: "/Users/{{ ansible_user_id }}/.profile"
-    content: export PATH=$PATH:/usr/local/homebrew/bin
+    - name: curl homebrew
+      ansible.builtin.shell:
+        chdir: /usr/local/src
+        cmd: curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C /opt/homebrew
+      when: not homebrew.stat.exists
 
 - name: update homebrew
   homebrew:
