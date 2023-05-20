@@ -66,9 +66,9 @@
     name: jq
     state: latest
 
-- name: add homebrew to PATH
+- name: update PATH
   lineinfile:
     dest: "~/.profile"
     insertafter: EOF
-    line: 'export PATH=$PATH:/opt/homebrew/bin'
+    line: 'export PATH=$PATH:/Users/{{ ansible_user_id }}/Library/Python/{{ ansible_facts["python"]["version"]["major"] }}.{{ ansible_facts["python"]["version"]["minor"] }}/bin:/opt/homebrew/bin'
     state: present
