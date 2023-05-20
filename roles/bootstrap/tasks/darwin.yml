@@ -65,3 +65,10 @@
   homebrew:
     name: jq
     state: latest
+
+- name: add homebrew to PATH
+  lineinfile:
+    dest: "~/.profile"
+    insertafter: EOF
+    line: 'export PATH=$PATH:/opt/homebrew/bin'
+    state: present
