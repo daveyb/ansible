@@ -1,5 +1,12 @@
 ---
-- name: install vim
+# hangs for some reason
+#- name: install vim
+#  homebrew:
+#    name: vim
+#    state: latest
+
+- name: install node (for copilot.vim)
   homebrew:
-    name: vim
+    name: node
     state: latest
+

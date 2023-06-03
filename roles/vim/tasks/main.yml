@@ -2,9 +2,8 @@
 - include_tasks: linux.yml
   when: ansible_system == "Linux"
 
-# brew install vim hangs, removed
-#- include_tasks: darwin.yml
-#  when: ansible_system == "Darwin"
+- include_tasks: darwin.yml
+  when: ansible_system == "Darwin"
 
 - name: create ~/.vim directory
   file:
@@ -87,3 +86,8 @@
   git:
     repo: https://github.com/hashivim/vim-terraform.git
     dest: ~/.vim/bundle/vim-terraform
+
+- name: clone copilot.vim to ~/.vim/bundle/
+  git:
+    repo: https://github.com/github/copilot.vim.git
+    dest: ~/.vim/bundle/copilot.vim
