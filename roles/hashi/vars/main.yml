@@ -1,0 +1,12 @@
+---
+hashi_base_url: 'https://releases.hashicorp.com/'
+download_list:
+  - terraform
+  - sentinel
+  - vault
+  - consul
+terraform: 'terraform'
+sentinel: 'sentinel'
+vault: 'vault'
+consul: 'consul'
+install_base_directory: '/usr/local/src'

@@ -21,3 +21,9 @@
     name: jq
     state: latest
   become: true
+
+- name: Install htmlq
+  package:
+    name: htmlq
+    state: latest
+  become: true

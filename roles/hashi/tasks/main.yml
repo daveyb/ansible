@@ -1,0 +1,39 @@
+---
+- name: Determine latest release of Hashi tool... poorly
+  shell: >
+      curl -s "{{ hashi_base_url }}/{{ item }}" |
+      sed -n '/href="\/{{ item }}\/[0-9].[0-9].[0-9]\//p' |
+      awk 'NR==1{print $2}' |
+      awk -F '"' '{print $2}' |
+      awk -F '/' '{print $3}'
+  register: latest_version
+  loop: "{{ download_list }}"
+
+- name: loop debug
+  ansible.builtin.debug:
+    msg: "{{ item.results }}"
+  loop: "{{ latest_version }}"
+
+- name: create Hashi tool directory for latest version
+  file:
+    path: "{{ install_base_directory }}/{{ item.0 }}/{{ item.1.stdout }}"
+    state: directory
+    loop: "{{ download_list | product(latest_version) | list }}"
+    register: directory
+
+- name: Determine download link for Hashi tool... poorly
+  shell: >
+      curl -s "https://releases.hashicorp.com/{{ item.0 }}/{{ item.1.stdout }}" |
+      sed -n '/data-os="{{ ansible_system | lower }}" data-arch="{{ ansible_architecture }}"/p' |
+      awk 'NR==1{print $6}' |
+      awk -F '"' '{print $2}'
+  register: download_link
+  loop: "{{ download_list | product(latest_version) | list }}"
+
+- name: Download latest Hashi tool binary
+  get_url:
+    url: "{{ item.0.stdout }}"
+    dest: "{{ item.1 }}"
+    mode: 0755
+  become: true
+  loop: "{{ download_link | product(directory) | list }}"

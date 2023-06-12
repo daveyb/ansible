@@ -66,6 +66,11 @@
     name: jq
     state: latest
 
+- name: install htmlq
+  homebrew:
+    name: htmlq
+    state: latest
+
 - name: update PATH
   lineinfile:
     dest: "~/.profile"

@@ -77,3 +77,10 @@
   - golang
   tags:
   - golang
+
+- name: Hashi stuff
+  hosts: all
+  roles:
+  - hashi
+  tags:
+  - hashi
