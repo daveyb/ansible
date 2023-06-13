@@ -23,7 +23,7 @@
     state: latest
 
 # Manages HTTPS-based credentials (required for many SSO orgs)
-- name: install microsoft's git-credential-manager-core
+- name: install microsoft's git-credential-manager
   block:
     - name: tap microsoft git homebrew
       homebrew_tap:
