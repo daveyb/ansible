@@ -11,5 +11,27 @@
     dest: "{{ pyenv_root }}"
     force: yes
 
-- include_tasks: darwin.yml
-  when: ansible_system == "Darwin"
+- name: shim pyenv into ~/.profile
+  lineinfile:
+    path: "~/.profile"
+    line: "export PATH=${PATH}:{{ pyenv_root }}/bin"
+    regexp: "^export PATH=${PATH}"
+
+- name: Add pyenv to .profile
+  lineinfile:
+    dest: "~/.profile"
+    line: 'eval "$(pyenv init -)"'
+
+# NOTE: CFLAGS="-I$(xcrun --show-sdk-path)/usr/include" pyenv install 3.7.3
+# If you're getting compilation errors caused by xcode cli tools
+
+- name: Determine latest python release
+  shell: "{{ pyenv_root }}/bin/pyenv latest {{ python_version }}"
+  register: pyenv_latest
+
+- name: Install pyenv release
+  shell: "{{ pyenv_root }}/bin/pyenv install {{ pyenv_latest.stdout }}"
+  ignore_errors: true
+
+- name: Set global python version to pyenv_latest
+  shell: "{{ pyenv_root }}/bin/pyenv global {{ pyenv_latest.stdout }}"
