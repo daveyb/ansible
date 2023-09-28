@@ -38,7 +38,7 @@
     name: pre-commit
 
 # Note: there is an external dependency here - you must have git-credential-manager-core installed in Windows!!!
-- name: alias Windows git-credential-manager-core into WSL environment
+- name: alias Windows git-credential-manager into WSL environment
   copy:
     src: "{{ role_path}}/files/git-credential-manager"
     dest: /usr/bin/git-credential-manager

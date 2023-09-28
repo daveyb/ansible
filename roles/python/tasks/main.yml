@@ -28,6 +28,7 @@
 - name: Determine latest python release
   shell: "{{ pyenv_root }}/bin/pyenv latest {{ python_version }}"
   register: pyenv_latest
+  ignore_errors: true
 
 - name: Install pyenv release
   shell: "{{ pyenv_root }}/bin/pyenv install {{ pyenv_latest.stdout }}"
@@ -35,3 +36,4 @@
 
 - name: Set global python version to pyenv_latest
   shell: "{{ pyenv_root }}/bin/pyenv global {{ pyenv_latest.stdout }}"
+  ignore_errors: true
