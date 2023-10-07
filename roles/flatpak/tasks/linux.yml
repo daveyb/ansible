@@ -1,0 +1,39 @@
+---
+- name: Install and configure flatpak
+  block:
+    - name: Install flatpak
+      package:
+        name: flatpak
+        state: latest
+
+    - name: Install flatpak software plugin for gnome
+      package:
+        name: gnome-software-plugin-flatpak
+        state: latest
+  become: true
+
+- name: Add the flathub flatpak repository remote to the user installation
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    method: user
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+- name: Install flatpak packages from flathub (as specified in array in ./vars)
+  community.general.flatpak:
+    name: "{{ item }}"
+    state: present
+    remote: flathub
+    method: user
+  loop: "{{ flatpak_flathub_packages }}"
+
+- name: Ensure PWA dirs exist for Chrome apps
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0744
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+  loop:
+    - "/home/{{ ansible_user_id }}/.local/share/applications"
+    - "/home/{{ ansible_user_id }}/.local/share/icons"

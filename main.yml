@@ -77,3 +77,10 @@
   - golang
   tags:
   - golang
+
+- name: Flatpak packages
+  hosts: all
+  roles:
+  - flatpak
+  tags:
+  - flatpak

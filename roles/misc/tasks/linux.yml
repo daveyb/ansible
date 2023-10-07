@@ -11,20 +11,3 @@
     name: direnv
     state: latest
   become: true
-
-- name: Install and configure flatpak
-  block:
-    - name: Install flatpak
-      package:
-        name: flatpak
-        state: latest
-
-    - name: Install flatpak software plugin for gnome
-      package:
-        name: gnome-software-plugin-flatpak
-        state: latest
-
-    - name: Add flathub repo to flatpak (package directory)
-      shell: flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-  become: true
-
