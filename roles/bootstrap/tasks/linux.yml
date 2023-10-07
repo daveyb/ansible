@@ -9,6 +9,7 @@
     name: xclip
     state: latest
   when: wsl_environment == false
+  become: true
 
 - name: Install curl
   package:

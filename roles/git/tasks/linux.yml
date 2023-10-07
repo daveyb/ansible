@@ -33,9 +33,9 @@
     state: latest
   become: true
 
-- name: install pre-commit for git
-  pip:
-    name: pre-commit
+#- name: install pre-commit for git
+#  pip:
+#    name: pre-commit
 
 # Note: there is an external dependency here - you must have git-credential-manager-core installed in Windows!!!
 - name: alias Windows git-credential-manager into WSL environment
