@@ -1,0 +1,4 @@
+---
+rancher_source: "deb https://download.opensuse.org/repositories/isv:/Rancher:/stable/deb/ ./"
+rancher_gpg_source: "https://download.opensuse.org/repositories/isv:/Rancher:/stable/deb/Release.key"
+rancher_gpg_key_id: 322BDD0E231125AF14784FB21F833FA1A63FE758

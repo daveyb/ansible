@@ -84,3 +84,10 @@
   - flatpak
   tags:
   - flatpak
+
+- name: Rancher desktop
+  hosts: all
+  roles:
+  - rancher
+  tags:
+  - rancher

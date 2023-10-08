@@ -8,6 +8,12 @@
   helper = manager-core
   useHttpPath = true
 {% endif %}
+{% if ansible_system == "Debian" %}
+[credential]
+  helper = manager-core
+  useHttpPath = true
+  credentialStore = gpg
+{% endif %}
 [user]
   name = {{ git_user }}
   email = {{ git_email }}

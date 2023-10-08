@@ -11,3 +11,9 @@
     name: direnv
     state: latest
   become: true
+
+- name: Install pass
+  package:
+    name: pass
+    state: latest
+  become: true
