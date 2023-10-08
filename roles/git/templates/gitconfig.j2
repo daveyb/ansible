@@ -8,9 +8,9 @@
   helper = manager-core
   useHttpPath = true
 {% endif %}
-{% if ansible_system == "Debian" %}
+{% if ansible_system == "Linux" %}
 [credential]
-  helper = manager-core
+  helper = /usr/local/bin/git-credential-manager
   useHttpPath = true
   credentialStore = gpg
 {% endif %}
