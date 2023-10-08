@@ -4,15 +4,16 @@
     name: lshw
     state: latest
   when: wsl_environment == false
-
-- name: Install kupfer
-  package:
-    name: kupfer
-    state: latest
-  when: wsl_environment == false
+  become: true
 
 - name: Install direnv
   package:
     name: direnv
+    state: latest
+  become: true
+
+- name: Install pass
+  package:
+    name: pass
     state: latest
   become: true

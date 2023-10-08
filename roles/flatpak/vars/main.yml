@@ -1,0 +1,22 @@
+---
+flatpak_flathub_packages:
+- org.freedesktop.Platform/x86_64/22.08
+- com.github.tchx84.Flatseal
+- org.signal.Signal
+- tech.feliciano.pocket-casts
+- com.calibre_ebook.calibre
+- org.chromium.Chromium
+- com.visualstudio.code
+- com.spotify.Client
+- com.protonvpn.www
+- com.dropbox.Client
+- us.zoom.Zoom
+- org.gimp.GIMP
+- com.slack.Slack
+- tv.plex.PlexDesktop
+- com.authy.Authy
+- fr.handbrake.ghb
+- com.google.Chrome
+- com.github.IsmaelMartinez.teams_for_linux
+- dev.geopjr.Tuba
+- com.google.AndroidStudio

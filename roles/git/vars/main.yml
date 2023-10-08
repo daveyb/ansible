@@ -1,0 +1,4 @@
+---
+gcm_version: "2.3.2"
+gcm_deb_package_name: "gcm-linux_amd64.{{ gcm_version }}.deb"
+gcm_deb_url: "https://github.com/git-ecosystem/git-credential-manager/releases/download/v{{ gcm_version }}/{{ gcm_deb_package_name }}"
