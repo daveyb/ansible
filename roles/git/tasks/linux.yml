@@ -47,3 +47,24 @@
     mode: '0755'
   when: wsl_environment
   become: true
+
+- name: Install git-credential-manager (gcm)
+  block:
+  - name: check if git-credential-manager is installed
+    command: "dpkg-query -W {{ gcm_deb_package_name }}"
+    register: gcm_install_check
+    failed_when: gcm_install_check.rc > 1
+    changed_when: gcm_install_check.rc == 1
+
+  - name: download gcm
+    get_url:
+      url: "{{ gcm_deb_url }}"
+      dest: "{{ working_dir }}/{{ gcm_deb_package_name }}"
+    when: gcm_install_check.rc == 1
+
+  - name: install gcm
+    apt: deb="{{ working_dir }}/{{ gcm_deb_package_name }}"
+    when: gcm_install_check.rc == 1
+    become: true
+  when: wsl_environment != true
+
