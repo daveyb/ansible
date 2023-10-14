@@ -17,3 +17,18 @@
     name: pass
     state: latest
   become: true
+
+- name: Install libdvdcss
+  package:
+    name: libdvd-pkg
+    state: latest
+  become: true
+
+- name: Install gstreamer packages
+  package:
+    name: "gstreamer1.0-plugins-{{ item }}"
+    state: latest
+  loop:
+    - "bad"
+    - "ugly"
+  become: true

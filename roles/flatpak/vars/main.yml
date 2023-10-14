@@ -8,7 +8,7 @@ flatpak_flathub_packages:
 - org.chromium.Chromium
 - com.visualstudio.code
 - com.spotify.Client
-  #- com.protonvpn.www
+- com.protonvpn.www
 - com.dropbox.Client
 - us.zoom.Zoom
 - org.gimp.GIMP
@@ -20,6 +20,9 @@ flatpak_flathub_packages:
 - com.github.IsmaelMartinez.teams_for_linux
 - dev.geopjr.Tuba
 - com.google.AndroidStudio
-  #- com.valvesoftware.Steam
+- com.valvesoftware.Steam
 - ch.protonmail.protonmail-bridge
 - org.gnome.Maps
+- org.gnome.Totem
+- org.videolan.VLC
+- org.audacityteam.Audacity
