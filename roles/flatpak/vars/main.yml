@@ -6,7 +6,7 @@ flatpak_flathub_packages:
 - tech.feliciano.pocket-casts
 - com.calibre_ebook.calibre
 - org.chromium.Chromium
-- com.visualstudio.code
+- com.vscodium.codium
 - com.spotify.Client
 - com.protonvpn.www
 - com.dropbox.Client
@@ -26,3 +26,5 @@ flatpak_flathub_packages:
 - org.gnome.Totem
 - org.videolan.VLC
 - org.audacityteam.Audacity
+- com.jetbrains.PyCharm-Community
+- org.gnome.Boxes
