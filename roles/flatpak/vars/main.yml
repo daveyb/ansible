@@ -28,3 +28,5 @@ flatpak_flathub_packages:
 - org.audacityteam.Audacity
 - com.jetbrains.PyCharm-Community
 - org.gnome.Boxes
+- org.gnome.Weather
+- org.inkscape.Inkscape
