@@ -1,6 +1,6 @@
 ---
 flatpak_flathub_packages:
-- org.freedesktop.Platform/x86_64/22.08
+- org.freedesktop.Platform/x86_64/23.08
 - com.github.tchx84.Flatseal
 - org.signal.Signal
 - tech.feliciano.pocket-casts
@@ -30,3 +30,5 @@ flatpak_flathub_packages:
 - org.gnome.Boxes
 - org.gnome.Weather
 - org.inkscape.Inkscape
+- org.zrythm.Zrythm
+- com.discordapp.Discord
