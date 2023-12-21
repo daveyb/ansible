@@ -38,6 +38,8 @@ homebrew_casks:
 - pocket-casts
 - calibre
 - eloston-chromium
+- firefox
+- brave-browser
 - vscodium
 - spotify
 - protonvpn
@@ -56,7 +58,6 @@ homebrew_casks:
 - discord
 - quicken
 - microsoft-office
-- parallels
 
 homebrew_formula:
 - the_silver_searcher
