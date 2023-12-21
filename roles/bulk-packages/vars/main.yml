@@ -37,7 +37,6 @@ homebrew_casks:
 - signal
 - pocket-casts
 - calibre
-- eloston-chromium
 - firefox
 - brave-browser
 - vscodium
