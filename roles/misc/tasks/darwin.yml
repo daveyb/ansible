@@ -1,14 +1,4 @@
 ---
-- name: install ag
-  homebrew:
-    name: the_silver_searcher
-    state: latest
-
-- name: install fswatch
-  homebrew:
-    name: fswatch
-    state: latest
-
 - name: autohide OSX dock
   shell: defaults write com.apple.dock autohide true
   notify: restart dock
@@ -16,26 +6,6 @@
 - name: pin OSX dock to right edge
   shell: defaults write com.apple.dock orientation right
   notify: restart dock
-
-- name: install kubectl
-  homebrew:
-    name: kubernetes-cli
-    state: latest
-
-- name: install k9s
-  homebrew:
-    name: k9s
-    state: latest
-
-- name: install kubectx
-  homebrew:
-    name: kubectx
-    state: latest
-
-- name: install direnv
-  homebrew:
-    name: direnv
-    state: latest
 
 - name: check if privileges cli app is installed (corporate nanny)
   command: /Applications/Privileges.app/Contents/Resources/PrivilegesCLI --help

@@ -50,7 +50,7 @@
   tags:
   - vim
 
-- name: Install misc packages
+- name: Run misc tasks
   hosts: all
   roles:
   - misc
@@ -78,12 +78,12 @@
   tags:
   - golang
 
-- name: Flatpak packages
+- name: Bulk install of packages
   hosts: all
   roles:
-  - flatpak
+  - bulk-packages
   tags:
-  - flatpak
+  - bulk-packages
 
 - name: Rancher desktop
   hosts: all
