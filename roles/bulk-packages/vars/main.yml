@@ -57,6 +57,7 @@ homebrew_casks:
 - discord
 - quicken
 - microsoft-office
+- netnewswire
 
 homebrew_formula:
 - the_silver_searcher
