@@ -1,0 +1,7 @@
+---
+- name: clone Determinate Systems' nix-installer
+  git:
+    repo: 'https://github.com/DeterminateSystems/nix-installer.git/refs/heads/{{ nix_branch }}'
+    dest: /usr/local/src/nix
+    force: yes
+    single_branch: yes
