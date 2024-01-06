@@ -32,3 +32,37 @@ flatpak_flathub_packages:
 - org.inkscape.Inkscape
 - org.zrythm.Zrythm
 - com.discordapp.Discord
+
+homebrew_casks:
+- signal
+- pocket-casts
+- calibre
+- firefox
+- brave-browser
+- vscodium
+- spotify
+- protonvpn
+- dropbox
+- zoom
+- gimp
+- slack
+- plex
+- authy
+- handbrake
+- microsoft-teams
+- android-studio
+- steam
+- pycharm
+- inkscape
+- discord
+- quicken
+- microsoft-office
+- netnewswire
+
+homebrew_formula:
+- the_silver_searcher
+- fswatch
+- kubernetes-cli
+- k9s
+- kubectx
+- direnv

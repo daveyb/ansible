@@ -1,1 +1,3 @@
 ---
+- name: Install Rancher via homebrew cask
+  shell: brew install --cask rancher

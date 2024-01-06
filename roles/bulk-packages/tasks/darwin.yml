@@ -1,0 +1,10 @@
+---
+- name: Install homebrew casks (as specified in array in ./vars)
+  shell: "brew install --cask {{ item }}"
+  loop: "{{ homebrew_casks }}"
+
+- name: Install homebrew formula (as specified in array in ./vars)
+  homebrew:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ homebrew_formula }}"
