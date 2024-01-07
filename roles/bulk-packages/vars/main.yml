@@ -32,6 +32,7 @@ flatpak_flathub_packages:
 - org.inkscape.Inkscape
 - org.zrythm.Zrythm
 - com.discordapp.Discord
+- com.brave.Browser
 
 homebrew_casks:
 - signal
