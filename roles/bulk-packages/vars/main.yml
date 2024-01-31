@@ -39,7 +39,6 @@ homebrew_casks:
 - calibre
 - firefox
 - brave-browser
-- vscodium
 - spotify
 - protonvpn
 - dropbox
@@ -58,6 +57,8 @@ homebrew_casks:
 - quicken
 - microsoft-office
 - netnewswire
+- visual-studio-code
+- dotnet-sdk
 
 homebrew_formula:
 - the_silver_searcher
