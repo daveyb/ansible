@@ -49,16 +49,13 @@ homebrew_casks:
 - authy
 - handbrake
 - microsoft-teams
-- android-studio
 - steam
 - pycharm
 - inkscape
 - discord
 - quicken
-- microsoft-office
 - netnewswire
 - visual-studio-code
-- dotnet-sdk
 
 homebrew_formula:
 - the_silver_searcher
