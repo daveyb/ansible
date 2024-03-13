@@ -4,3 +4,10 @@
 
 - include_tasks: darwin.yml
   when: ansible_system == "Darwin"
+
+- name: add rd binary to PATH
+  lineinfile:
+    dest: "~/.zshrc"
+    insertafter: BOF
+    line: 'export PATH=$PATH:~/.rd/bin'
+    state: present
