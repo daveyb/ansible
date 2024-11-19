@@ -1,0 +1,64 @@
+---
+- name: Build download list stage
+  set_fact:
+    download_list_append:
+      - name: "{{ item.name }}"
+        version: "{{ item.version }}"
+        path: "{{ [src_working_dir, item.name, item.version] | path_join }}"
+        uri: "{{ hashi_base_url }}/{{ item.name }}/{{ item.version }}/{{ item.name }}_{{ item.version }}_{{ ansible_system | lower }}_{{ ansible_architecture}}.zip"
+        file: "{{ item.name }}.zip"
+  with_items: "{{ tools }}"
+  register: download_list_stage
+
+- name: Build download list
+  set_fact:
+    download_list_build: "{{ item.ansible_facts.download_list_append | combine(item.item) }}"
+  with_items: "{{ download_list_stage.results }}"
+  register: download_list
+
+- name: create Hashi tool directory for latest version
+  file:
+    path: "{{ item.ansible_facts.download_list_build.path }}"
+    state: directory
+  with_items: "{{ download_list.results }}"
+  register: directory
+
+- name: Download Hashi tool into directory
+  get_url:
+    url: "{{ item.ansible_facts.download_list_build.uri }}"
+    dest: "{{ item.ansible_facts.download_list_build.path }}/{{ item.ansible_facts.download_list_build.file }}"
+    mode: 0755
+  with_items: "{{ download_list.results }}"
+  register: download
+
+- name: Unarchive tools
+  ansible.builtin.unarchive:
+    src: "{{ item.ansible_facts.download_list_build.path }}/{{ item.ansible_facts.download_list_build.file }}"
+    dest: "{{ item.ansible_facts.download_list_build.path }}"
+    remote_src: yes
+  with_items: "{{ download_list.results }}"
+
+- name: Make tools executable
+  file:
+    path: "{{ item.ansible_facts.download_list_build.path }}/{{ item.ansible_facts.download_list_build.name }}"
+    mode: u+x
+  with_items: "{{ download_list.results }}"
+
+- name: Create bin directory for Ansible-managed binaries
+  file:
+    path: "{{ ansible_env.HOME }}/.ansible_src/bin"
+    state: directory
+  register: bin
+
+- name: Symlink Hashi tools into Ansible bin directory
+  file:
+    src: "{{ item.ansible_facts.download_list_build.path }}/{{ item.ansible_facts.download_list_build.name }}"
+    dest: "{{ ansible_env.HOME }}/.ansible_src/bin/{{ item.ansible_facts.download_list_build.name }}"
+    state: link
+  with_items: "{{ download_list.results }}"
+  register: symlink
+
+- name: Add ~/.ansible_src/bin to PATH via ~/.profile
+  lineinfile:
+    dest: "~/.profile"
+    line: "export PATH=~/.ansible_src/bin:${PATH}"
