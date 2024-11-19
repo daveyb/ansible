@@ -5,7 +5,7 @@
       - name: "{{ item.name }}"
         version: "{{ item.version }}"
         path: "{{ [src_working_dir, item.name, item.version] | path_join }}"
-        uri: "{{ hashi_base_url }}/{{ item.name }}/{{ item.version }}/{{ item.name }}_{{ item.version }}_{{ ansible_system | lower }}_{{ ansible_architecture}}.zip"
+        uri: "{{ hashi_download_base_url }}/{{ item.name }}/{{ item.version }}/{{ item.name }}_{{ item.version }}_{{ ansible_system | lower }}_{{ ansible_architecture}}.zip"
         file: "{{ item.name }}.zip"
   with_items: "{{ tools }}"
   register: download_list_stage
@@ -58,7 +58,7 @@
   with_items: "{{ download_list.results }}"
   register: symlink
 
-- name: Add ~/.ansible_src/bin to PATH via ~/.profile
+- name: Add ~/.ansible_src/bin to PATH via ~/.zprofile
   lineinfile:
-    dest: "~/.profile"
+    dest: "~/.zprofile"
     line: "export PATH=~/.ansible_src/bin:${PATH}"

@@ -91,3 +91,10 @@
   - rancher
   tags:
   - rancher
+
+- name: Hashi tools
+  hosts: all
+  roles:
+  - hashi
+  tags:
+  - hashi
