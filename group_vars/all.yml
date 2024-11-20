@@ -3,3 +3,4 @@
 git_user:
 git_email:
 working_dir: /tmp
+src_working_dir: "{{ lookup('env','HOME') }}/.ansible_src"
