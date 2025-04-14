@@ -34,28 +34,27 @@ flatpak_flathub_packages:
 - com.discordapp.Discord
 
 homebrew_casks:
-- signal
-- pocket-casts
-- calibre
-- firefox
-- brave-browser
-- spotify
-- protonvpn
-- dropbox
-- zoom
-- gimp
-- slack
-- plex
-- authy
-- handbrake
-- microsoft-teams
-- steam
-- pycharm
-- inkscape
-- discord
-- quicken
-- netnewswire
-- visual-studio-code
+  #- signal
+  #- pocket-casts
+  #- calibre
+  #- firefox
+  #- brave-browser
+  #- spotify
+  #- protonvpn
+  #- dropbox
+  #- zoom
+  #- gimp
+  #- slack
+  #- plex
+  #- handbrake
+  #- microsoft-teams
+  #- steam
+  #- pycharm
+  #- inkscape
+  #- discord
+  #- quicken
+  #- netnewswire
+  - visual-studio-code
 
 homebrew_formula:
 - the_silver_searcher
@@ -64,3 +63,4 @@ homebrew_formula:
 - k9s
 - kubectx
 - direnv
+- Azure/kubelogin/kubelogin
