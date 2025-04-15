@@ -9,5 +9,4 @@
   homebrew:
     name: "{{ item }}"
     state: latest
-    loop: "{{ homebrew_formula }}"
-    ignore_errors: yes
+  loop: "{{ homebrew_formula }}"
