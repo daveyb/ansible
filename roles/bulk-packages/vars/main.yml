@@ -55,6 +55,7 @@ homebrew_casks:
   #- quicken
   #- netnewswire
   - visual-studio-code
+  - visual-studio-code@insiders
 
 homebrew_formula:
 - the_silver_searcher
