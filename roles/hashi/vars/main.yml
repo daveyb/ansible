@@ -4,16 +4,16 @@ hashi_download_base_url: "https://releases.hashicorp.com"
 # Hashi now blocks scraping their DL page, so specifying name/version pairs  here
 tools:
   - name: consul
-    version: 1.20.5
+    version: 1.22.2
   - name: hcp
-    version: 0.9.0
+    version: 0.11.0
   - name: nomad
-    version: 1.10.0
+    version: 1.11.1
   - name: packer
-    version: 1.12.0
+    version: 1.14.3
   - name: sentinel
-    version: 0.30.0
+    version: 0.40.0
   - name: terraform
-    version: 1.11.4
+    version: 1.14.3
   - name: vault
-    version: 1.19.1
+    version: 1.21.1
