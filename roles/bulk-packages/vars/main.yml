@@ -3,43 +3,24 @@ flatpak_flathub_packages:
 - org.freedesktop.Platform/x86_64/23.08
 - com.github.tchx84.Flatseal
 - org.signal.Signal
-- tech.feliciano.pocket-casts
 - com.calibre_ebook.calibre
-- org.chromium.Chromium
-- com.vscodium.codium
-- com.spotify.Client
 - com.protonvpn.www
-- com.dropbox.Client
 - us.zoom.Zoom
-- org.gimp.GIMP
-- com.slack.Slack
-- tv.plex.PlexDesktop
-- com.authy.Authy
 - fr.handbrake.ghb
-- com.google.Chrome
-- com.github.IsmaelMartinez.teams_for_linux
 - dev.geopjr.Tuba
-- com.google.AndroidStudio
-- com.valvesoftware.Steam
-- ch.protonmail.protonmail-bridge
 - org.gnome.Maps
 - org.gnome.Totem
 - org.videolan.VLC
-- org.audacityteam.Audacity
-- com.jetbrains.PyCharm-Community
 - org.gnome.Boxes
 - org.gnome.Weather
-- org.inkscape.Inkscape
-- org.zrythm.Zrythm
-- com.discordapp.Discord
 
 homebrew_casks:
-- visual-studio-code
-- visual-studio-code@insiders
+- ungoogled-chromium
+- zed
+- zoom
 
 homebrew_formula:
 - the_silver_searcher
-- fswatch
 - kubernetes-cli
 - k9s
 - kubectx
