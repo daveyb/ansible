@@ -32,3 +32,4 @@
     - name: install cask
       homebrew_cask:
         name: git-credential-manager
+  become: true
