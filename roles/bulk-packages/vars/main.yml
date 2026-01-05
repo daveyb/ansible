@@ -26,3 +26,6 @@ homebrew_formula:
 - k9s
 - kubectx
 - direnv
+- azure-cli
+- awscli
+- gcloud-cli
