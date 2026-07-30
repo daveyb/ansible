@@ -12,7 +12,7 @@ flatpak_flathub_packages:
 
 homebrew_casks:
 - zed
-- antigravity
+- antigravity-cli
 - grok-build
 - pocket-casts
 - calibre
