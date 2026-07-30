@@ -4,10 +4,12 @@ flatpak_flathub_packages:
 - com.github.tchx84.Flatseal
 - org.signal.Signal
 - com.calibre_ebook.calibre
+- org.chromium.Chromium
+- com.spotify.Client
 - com.protonvpn.www
 - us.zoom.Zoom
-- fr.handbrake.ghb
-- dev.geopjr.Tuba
+- org.gimp.GIMP
+- com.slack.Slack
 - org.gnome.Maps
 - org.gnome.Totem
 - org.videolan.VLC
@@ -15,17 +17,17 @@ flatpak_flathub_packages:
 - org.gnome.Weather
 
 homebrew_casks:
-- ungoogled-chromium
 - zed
-- zoom
-- rectangle
+- grok-build
+- pocket-casts
+- calibre
+- spotify
+- protonvpn
 
 homebrew_formula:
 - the_silver_searcher
+- fswatch
 - kubernetes-cli
 - k9s
 - kubectx
 - direnv
-- azure-cli
-- awscli
-- gcloud-cli
