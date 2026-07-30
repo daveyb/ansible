@@ -2,6 +2,8 @@
 - name: Install homebrew casks (as specified in array in ./vars)
   shell: "brew install --cask {{ item }}"
   loop: "{{ homebrew_casks }}"
+  ignore_errors: yes
+
 
 - name: Install homebrew formula (as specified in array in ./vars)
   homebrew:

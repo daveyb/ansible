@@ -58,7 +58,9 @@
   with_items: "{{ download_list.results }}"
   register: symlink
 
-- name: Add ~/.ansible_src/bin to PATH via ~/.zprofile
+- name: Add ~/.ansible_src/bin to PATH via ~/.profile
   lineinfile:
-    dest: "~/.zprofile"
+    dest: "~/.profile"
+    insertafter: EOF
     line: "export PATH=~/.ansible_src/bin:${PATH}"
+    state: present
