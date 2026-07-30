@@ -2,27 +2,23 @@
 flatpak_flathub_packages:
 - org.freedesktop.Platform/x86_64/23.08
 - com.github.tchx84.Flatseal
-- org.signal.Signal
 - com.calibre_ebook.calibre
 - org.chromium.Chromium
 - com.spotify.Client
 - com.protonvpn.www
 - us.zoom.Zoom
-- org.gimp.GIMP
-- com.slack.Slack
-- org.gnome.Maps
-- org.gnome.Totem
-- org.videolan.VLC
 - org.gnome.Boxes
 - org.gnome.Weather
 
 homebrew_casks:
 - zed
+- antigravity
 - grok-build
 - pocket-casts
 - calibre
 - spotify
 - protonvpn
+- google-drive
 
 homebrew_formula:
 - the_silver_searcher
@@ -31,3 +27,4 @@ homebrew_formula:
 - k9s
 - kubectx
 - direnv
+- incus
