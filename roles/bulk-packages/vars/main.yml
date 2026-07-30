@@ -17,12 +17,12 @@ flatpak_flathub_packages:
 - org.gnome.Weather
 
 homebrew_casks:
-- signal
+- zed
+- grok-build
 - pocket-casts
 - calibre
 - spotify
 - protonvpn
-- netnewswire
 
 homebrew_formula:
 - the_silver_searcher
